@@ -1,0 +1,30 @@
+PKM001,Charizard,Fire,220,5,60,Fire Claws,30,150,Fire Spin
+PKM002,Arcanine,Fire,170,4,40,Bite,25,120,Inferno Onrush
+PKM003,Moltres,Fire,120,3,50,Sky Attack,5,100,Heat Blast
+PKM004,Rapidash,Fire,90,2,20,Flare,30,40,Fire Mane
+PKM005,Heatmor,Fire,80,1,20,Combustion,15,35,Fire Claws
+PKM006,Charmender,Fire,60,1,20,Ember,15,35,Fire Claws
+PKM007,Articuno,Water,220,5,50,Ice Wing,45,100,Blizzard
+PKM008,Gyarados,Water,175,5,60,Ice Beam,20,140,Hyper Beam
+PKM009,Starmie,Water,150,4,40,Water Plash,30,100,Hydro Splash
+PKM010,Kingler,Water,90,3,30,Vise Grip,35,70,KO Crab
+PKM011,Psyduck,Water,90,2,20,Headache,20,50,Aqua Edge
+PKM012,Squirtle,Water,60,1,20,Water Gun,10,40,Wave Splash
+PKM013,Venusaur,Grass,250,5,40,Razor Leaf,50,110,Mega Drain
+PKM014,Exeggutor,Grass,160,4,35,Stomp,65,90,Tropical Swing
+PKM015,Beedrill,Grass,130,4,45,Bug Bite,30,100,Sharp Sting
+PKM016,Parasect,Grass,90,3,30,Scratch,35,70,Slash
+PKM017,Venomonth,Grass,80,2,25,Tackle,25,50,Posin Powder
+PKM018,Bulbasaur,Grass,60,1,20,Vine Whip,15,40,Razor Leaf
+PKM019,Pikachu,Electric,160,5,80,Gnaw,30,200,Circle Circuit
+PKM020,Zapdos,Electric,125,4,60,Thunder Shock,25,150,Thundering Hurricane
+PKM021,Jolteon,Electric,110,4,45,Electric Tackle,30,100,Pin Missile
+PKM022,Voltorb,Electric,90,3,40,Tackle,20,80,Electro Ball
+PKM023,Magnemite,Electric,60,2,40,Lightning Ball,20,90,Spinning Ball
+PKM024,Helioptile,Electric,55,1,35,Tail Whip,15,80,Quick Attack
+PKM025,Machamp,Ground,200,5,60,Strength,35,120,Seismic Toss
+PKM026,Marowak,Ground,170,4,50,Growl,30,100,Bone Beatdown
+PKM027,Rhyhorn,Ground,130,3,35,Ground Tackle,25,80,Land Crush
+PKM028,Graveler,Ground,120,3,35,Ground Tackle,25,80,Rollout
+PKM029,Hitmonlee,Ground,90,2,30,Tackle,20,70,Stretch Kick
+PKM030,Diglett,Ground,70,1,20,Mud-Slap,15,50,Dig
