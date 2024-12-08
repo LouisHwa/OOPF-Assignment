@@ -2,6 +2,7 @@ package classes;
 
 
 public class Pokemon {
+	private String pokemonID;
 	private String pokemonName;
 	private String pokemonType;
 	private int pokemonHP;
@@ -13,23 +14,22 @@ public class Pokemon {
 	private String pokemonZMoveName;
 	private double zmoveProbability;
 	
-	// COnstructor is not needed for pokemon as we will not be 
-	//introducing any new pokemons other thn the 30 stored in the txt 
-	//file
-//	public Pokemon(String pokemonName, String pokemonType, int pokemonHP, int pokemonRARITY, int pokemonATK,
-//			String pokemonATKName, int pokemonDEF, int pokemonZMove, String pokemonZMoveName, double zmoveProbability) {
-//		
-//		setPokemonName(pokemonName);
-//		setPokemonType(pokemonType);
-//		setPokemonHP(pokemonHP);
-//		setPokemonRARITY(pokemonRARITY);
-//		setPokemonATK(pokemonATK);
-//		setPokemonATKName(pokemonATKName);
-//		this.pokemonDEF = pokemonDEF;
-//		this.pokemonZMove = pokemonZMove;
-//		this.pokemonZMoveName = pokemonZMoveName;
-//		this.zmoveProbability = zmoveProbability;
-//	}
+	public Pokemon(String pokemonID, String pokemonName, String pokemonType, int pokemonHP, int pokemonRARITY,
+			int pokemonATK, String pokemonATKName, int pokemonDEF, int pokemonZMove, String pokemonZMoveName,
+			double zmoveProbability) {
+		super();
+		this.pokemonID = pokemonID;
+		this.pokemonName = pokemonName;
+		this.pokemonType = pokemonType;
+		this.pokemonHP = pokemonHP;
+		this.pokemonRARITY = pokemonRARITY;
+		this.pokemonATK = pokemonATK;
+		this.pokemonATKName = pokemonATKName;
+		this.pokemonDEF = pokemonDEF;
+		this.pokemonZMove = pokemonZMove;
+		this.pokemonZMoveName = pokemonZMoveName;
+		this.zmoveProbability = zmoveProbability;
+	}
 
 	public String getPokemonName() {
 		return pokemonName;
@@ -111,6 +111,16 @@ public class Pokemon {
 		this.zmoveProbability = zmoveProbability;
 	}
 	
+	public String pokemonInfo() {
+		return "Pokemon Name: "  + getPokemonName() + 
+				"\nPokemon Type: " + getPokemonType() + 
+				"\nPokemon Rarity: " + getPokemonRARITY() + 
+				"\nPokemon HP: " + getPokemonHP() + 
+				"\nPokemon ATK: " + getPokemonATK() + 
+				"\nPokemon DEF: " + getPokemonDEF() + 
+				"\nPokemon Z-Move: " + getPokemonZMove();
+			
+	}
 	
 	
 }
