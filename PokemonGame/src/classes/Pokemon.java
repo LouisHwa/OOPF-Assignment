@@ -111,6 +111,14 @@ public class Pokemon {
 		this.zmoveProbability = zmoveProbability;
 	}
 	
+	@Override
+	public String toString() {
+		return String.format(
+				"Pokemon [pokemonID=%s, pokemonName=%s, pokemonType=%s, pokemonHP=%s, pokemonRARITY=%s, pokemonATK=%s, pokemonATKName=%s, pokemonDEF=%s, pokemonZMove=%s, pokemonZMoveName=%s, zmoveProbability=%s]",
+				pokemonID, pokemonName, pokemonType, pokemonHP, pokemonRARITY, pokemonATK, pokemonATKName, pokemonDEF,
+				pokemonZMove, pokemonZMoveName, zmoveProbability);
+	}
+
 	public String pokemonInfo() {
 		return "Pokemon Name: "  + getPokemonName() + 
 				"\nPokemon Type: " + getPokemonType() + 
@@ -121,6 +129,4 @@ public class Pokemon {
 				"\nPokemon Z-Move: " + getPokemonZMove();
 			
 	}
-	
-	
 }

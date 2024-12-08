@@ -48,7 +48,7 @@ public class Database {
 		}
 	}
 	
-	
+	// Reads all the details in player file and stored in playerList
 	public void readPlayerFile() {
 		try {
 			Scanner reader = new Scanner(Database.playerFile);
@@ -56,9 +56,10 @@ public class Database {
 				String lines = reader.nextLine();
 				String[] playerDetails = lines.split(",");
 				Player player = new Player(playerDetails[0], playerDetails[1], Integer.parseInt(playerDetails[2]), 
-						Integer.parseInt(playerDetails[3]), getPlayerPokemons(playerDetails[4]), Integer.parseInt(playerDetails[5]));
+						Integer.parseInt(playerDetails[3]), getPlayerPokemons(playerDetails[0]), Integer.parseInt(playerDetails[5]));
+
+				this.playerList.add(player);
 			};
-			
 			reader.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -66,14 +67,21 @@ public class Database {
 		
 	}
 	
+	// Getting top Five players
 	public ArrayList<Player> getTopFive(){
-		ArrayList<Player> topFive = new ArrayList<Player>();
+		ArrayList<Player> temp = new ArrayList<Player>();
 		
+		for(int i = 0; i < this.playerList.size(); i++) {
+			temp.add(this.playerList.get(i));
+		}
 		
+		temp.sort((p1, p2) -> p2.getPlayerScore() - p1.getPlayerScore());
+		ArrayList<Player> topFive = new ArrayList<>(temp.subList(0, Math.min(5, temp.size())));
 		return topFive;
 		
 	}
 	
+	// Getting the players pokemon in the txt and stored it accordingly in the playerList
 	public ArrayList<Pokemon> getPlayerPokemons(String playerID){
 		ArrayList<Pokemon> playerOwnedPokemons = new ArrayList<Pokemon>();
 		try {
@@ -84,14 +92,14 @@ public class Database {
 				if(playerDetails[0].equals(playerID)) {
 					String[] tempList = playerDetails[4].split("-");
 					for(String pokemon: tempList) {
-						int index = 0;
+						int index = -1;
 						for(int i = 0; i < pokemonList.size(); i++) {
 							if (pokemonList.get(i).getPokemonName().equals(pokemon)) {
-								index = 1;
+								index = i;
 								break;
 							}
 						}
-						if(index != 0) {
+						if(index != -1) {
 							playerOwnedPokemons.add(pokemonList.get(index));
 						}
 						
@@ -108,10 +116,39 @@ public class Database {
 		
 		return null;
 	}
+	
+	// Adding new players to the playerList
+	public void addPlayer(String playerName) {
+		String newID = generatePlayerID();
+		this.playerList.add(new Player(newID, playerName));
+	}
+	
+	// Writing contents of playerList to the txt file.
+	public void writeToFile() {
+		try {
+			FileWriter writer = new FileWriter("testDetails.txt");
+
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	
+	
+	public String generatePlayerID() {
+		String lastPlayerID = getPlayerList().get(this.playerList.size()-1).getPlayerID();
+		System.out.println(lastPlayerID);
+		
+		
+		int id =  Integer.parseInt(lastPlayerID.substring(1)) + 1;
+		String newPlayerID = String.format("P%03d", id);
+		
+		return newPlayerID;
+	}
 
 	
-	// Need to find a way to extract the pokemon details and stored it in an array.
-	// Extract all the pokemons into the list array, line by line. 
-	// Then create a method to extract the pokemonDetails by splitting ','. Can acccept the input by pokemon 'ID'.
-	// After splitting, the function will return each values with a given name
 }	
