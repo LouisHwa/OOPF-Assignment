@@ -25,11 +25,14 @@ public class testDatabase {
 		ArrayList<Player> newPlayerList = new ArrayList<Player>();
 		newPlayerList = db.getPlayerList();
 		System.out.println(newPlayerList);
-		System.out.println(newPlayerList.get(0).getPlayerPokemons().get(0).pokemonInfo());
+//		System.out.println(newPlayerList.get(0).getPlayerPokemons().get(0).pokemonInfo());
 		System.out.println(newPlayerList.size());
-		for(Player player: newPlayerList) {
-			System.out.println(player.getPlayerName());
-		};
+//		for(Player player: newPlayerList) {
+//			System.out.println(db.loadPlayerPokemons(player));
+//		};
+		System.out.println("------");
+		System.out.println(newPlayerList.get(7));
+		System.out.println("------");
 		System.out.println();
 	
 		
@@ -42,9 +45,32 @@ public class testDatabase {
 		System.out.println();
 		
 		//Adding new player
-		db.addPlayer("Jeremy");
+		
 		System.out.println(newPlayerList.get(7).getPlayerPokemons());
 		System.out.println(newPlayerList.size());
+		
+		// Writing into text file
+		System.out.println(newPlayerList.size());
+		System.out.println(db.getPlayerList().get(7).getPlayerName() + db.getPlayerList().get(7).getPlayerPokemons());
+		System.out.println(db.getPlayerList().get(8).getPlayerName()+ db.getPlayerList().get(8).getPlayerPokemons());
+
+		// When new player added to the player list, it is stored as the value null.
+		if(db.getPlayerList().get(8).getPlayerPokemons() == null) {
+			System.out.println("Hey");
+		}
+		
+		System.out.println(db.loadPlayerPokemons("P008"));
+		if(db.loadPlayerPokemons("P008") == null) {
+			System.out.println("EY");
+			
+		// When you explicitely get the playerpokemon it will return an empty string
+		} else if(db.loadPlayerPokemons("P008").isEmpty()) {
+			System.out.println("HUH");
+		}
+//		db.addPlayer("SiXuan");
+//		db.writeToFile();
+		
+		
 		
 	}
 

@@ -5,3 +5,4 @@ P004,Huai Yin,44789,23,Jolteon-Marowak-Charizard-Starmie,222
 P005,Jacqualeyn,52345,30,Charmender-Pikachu,480
 P006,Henry,23440,12,Machamp-Pikachu,124
 P007,Lucas,3357,1,Charmender,14
+P008,Jeremy,0,0,null,0

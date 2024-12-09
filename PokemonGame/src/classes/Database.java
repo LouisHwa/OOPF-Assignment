@@ -55,8 +55,9 @@ public class Database {
 			while(reader.hasNextLine()) {
 				String lines = reader.nextLine();
 				String[] playerDetails = lines.split(",");
+				
 				Player player = new Player(playerDetails[0], playerDetails[1], Integer.parseInt(playerDetails[2]), 
-						Integer.parseInt(playerDetails[3]), getPlayerPokemons(playerDetails[0]), Integer.parseInt(playerDetails[5]));
+						Integer.parseInt(playerDetails[3]), loadPlayerPokemons(playerDetails[0]), Integer.parseInt(playerDetails[5]));
 
 				this.playerList.add(player);
 			};
@@ -82,7 +83,7 @@ public class Database {
 	}
 	
 	// Getting the players pokemon in the txt and stored it accordingly in the playerList
-	public ArrayList<Pokemon> getPlayerPokemons(String playerID){
+	public ArrayList<Pokemon> loadPlayerPokemons(String playerID){
 		ArrayList<Pokemon> playerOwnedPokemons = new ArrayList<Pokemon>();
 		try {
 			Scanner reader = new Scanner(Database.playerFile);
@@ -90,26 +91,31 @@ public class Database {
 				String lines = reader.nextLine();
 				String[] playerDetails = lines.split(",");
 				if(playerDetails[0].equals(playerID)) {
-					String[] tempList = playerDetails[4].split("-");
-					for(String pokemon: tempList) {
-						int index = -1;
-						for(int i = 0; i < pokemonList.size(); i++) {
-							if (pokemonList.get(i).getPokemonName().equals(pokemon)) {
-								index = i;
-								break;
+					
+					
+					// Check if the pokemon return the value "null"
+					if(!playerDetails[4].equals("null")){
+						String[] tempList = playerDetails[4].split("-");
+						for(String pokemon: tempList) {
+							int index = -1;
+							for(int i = 0; i < pokemonList.size(); i++) {
+								if (pokemonList.get(i).getPokemonName().equals(pokemon)) {
+									index = i;
+									break;
+								}
+							}
+							if(index != -1) {
+								playerOwnedPokemons.add(pokemonList.get(index));
 							}
 						}
-						if(index != -1) {
-							playerOwnedPokemons.add(pokemonList.get(index));
-						}
-						
+					}else {
+						playerOwnedPokemons = null;
 					}
-					
 				}
 			}
 			reader.close();
 			return playerOwnedPokemons;
-		} catch (FileNotFoundException e) {
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -121,23 +127,54 @@ public class Database {
 	public void addPlayer(String playerName) {
 		String newID = generatePlayerID();
 		this.playerList.add(new Player(newID, playerName));
+		System.out.println("Successfully added.");
 	}
+
 	
 	// Writing contents of playerList to the txt file.
 	public void writeToFile() {
 		try {
-			FileWriter writer = new FileWriter("testDetails.txt");
+			FileWriter writer = new FileWriter(Database.playerFile);
+			String playerData = "", tempString = "";
+			
+				for(Player player: getPlayerList()) {
+					
+					//Check if got pokemon
+					if(player.getPlayerPokemons() != null) {
+						for(Pokemon pokemon : player.getPlayerPokemons()) {
+							tempString = tempString.concat(pokemon.getPokemonName() + "-");
+						}
+						playerData = String.format("%s,%s,%s,%s,%s,%s\n", 
+								player.getPlayerID(), 
+								player.getPlayerName(), 
+								player.getPlayerScore(),
+								player.getPlayerBattlePlayed(),
+								tempString.substring(0,tempString.length()-1),
+								player.getPlayerMedal());
+						
+					}else {
+						playerData = String.format("%s,%s,%s,%s,%s,%s\n", 
+								player.getPlayerID(), 
+								player.getPlayerName(), 
+								player.getPlayerScore(),
+								player.getPlayerBattlePlayed(),
+								"null",
+								player.getPlayerMedal());
+					}
+					
+					writer.write(playerData);
+					tempString = "";
+				}
 
 			
+			
+			writer.close();
+			System.out.println("Data written to file successfully.");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
-	
-	
-	
 	
 	public String generatePlayerID() {
 		String lastPlayerID = getPlayerList().get(this.playerList.size()-1).getPlayerID();
