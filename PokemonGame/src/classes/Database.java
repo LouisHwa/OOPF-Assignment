@@ -6,11 +6,14 @@ import java.io.FileWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 
 public class Database {
 	private ArrayList<Pokemon> pokemonList = new ArrayList<Pokemon>();
@@ -26,19 +29,45 @@ public class Database {
 		return this.playerList;
 	}
 	
+	
+	public static Class<? extends Pokemon> getPokemonTypeMap(String type) {
+        Map<String, Class<? extends Pokemon>> pokemonTypeMap = new HashMap<>();
+        pokemonTypeMap.put("Electric", Electric.class);
+        pokemonTypeMap.put("Water", Water.class);
+        pokemonTypeMap.put("Ground", Ground.class);
+        pokemonTypeMap.put("Grass", Grass.class);
+        pokemonTypeMap.put("Fire", Fire.class);
+        return pokemonTypeMap.get(type);
+    }
+	
+	
 	// Reads all the details in pokemon file and stored in pokemonList
 	public void readPokemonFile() {
 		try {
 			Scanner reader = new Scanner(Database.pokemonFile);
+			
 			while(reader.hasNextLine()) {
 				String lines = reader.nextLine();
 				String[] pokemonDetails = lines.split(",");
-				Pokemon pokemon = new Pokemon(pokemonDetails[0], pokemonDetails[1], pokemonDetails[2], 
-						Integer.parseInt(pokemonDetails[3]), Integer.parseInt(pokemonDetails[4]), Integer.parseInt(pokemonDetails[5]),
-						pokemonDetails[6], Integer.parseInt(pokemonDetails[7]), Integer.parseInt(pokemonDetails[8]), 
-						pokemonDetails[9], Double.parseDouble(pokemonDetails[10]));
 				
-				this.pokemonList.add(pokemon);		
+				String pokemonType = pokemonDetails[2];
+				Class<? extends Pokemon> pokemonClass = getPokemonTypeMap(pokemonType);
+				
+				try {
+					Constructor<? extends Pokemon> constructorType = pokemonClass.getConstructor(
+							String.class, String.class, String.class, int.class, int.class, int.class, String.class, int.class, int.class, String.class, double.class);
+				
+					Pokemon pokemon = constructorType.newInstance(pokemonDetails[0], pokemonDetails[1], pokemonDetails[2], 
+							Integer.parseInt(pokemonDetails[3]), Integer.parseInt(pokemonDetails[4]), Integer.parseInt(pokemonDetails[5]),
+							pokemonDetails[6], Integer.parseInt(pokemonDetails[7]), Integer.parseInt(pokemonDetails[8]), 
+							pokemonDetails[9], Double.parseDouble(pokemonDetails[10]));
+					
+					this.pokemonList.add(pokemon);	
+				
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}	
 			};
 			reader.close();
 			

@@ -70,7 +70,7 @@ public class testDatabase {
 //		db.addPlayer("SiXuan");
 //		db.writeToFile();
 		
-		
+//		System.out.println(Database.getPokemonTypeMap("Fire"));
 		
 	}
 

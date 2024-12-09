@@ -1,7 +1,7 @@
 package classes;
 
 
-public class Pokemon {
+public abstract class Pokemon {
 	private String pokemonID;
 	private String pokemonName;
 	private String pokemonType;
@@ -129,4 +129,6 @@ public class Pokemon {
 				"\nPokemon Z-Move: " + getPokemonZMove();
 			
 	}
+	
+	public abstract double checkEffectiveness(String opponentType);
 }
