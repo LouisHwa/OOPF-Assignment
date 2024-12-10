@@ -1,4 +1,5 @@
 package classes;
+import java.util.Random;
 public class PokemonBall {
 	//attributes
 	private String ballName;
@@ -37,10 +38,26 @@ public class PokemonBall {
 		this.ballAppearingProbability = ballAppearingProbability;
 	}
 	
+	
+//  other methods
+	// ball generator
+	public static PokemonBall ballGenerator(PokemonBall [] balls) {
+		double rnd = new Random().nextDouble();
+		
+		double[] randomBall = new double[balls.length];
+		for (int i = 0; i < balls.length; i++) {
+			randomBall[i] = balls[i].getBallAppearingProbability();
+			if (rnd <= randomBall[i]) {
+				return balls[i];
+			}
+		}
+		
+		return balls[balls.length - 1];
+	}
+	
 //	toString
 	@Override
 	public String toString() {
-		System.out.println("blah");
 		return "PokemonBall [ballName=" + ballName + ", ballSuccessProbability=" + ballSuccessProbability
 				+ ", ballAppearingProbability=" + ballAppearingProbability + "]";
 	}
