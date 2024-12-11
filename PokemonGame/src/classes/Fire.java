@@ -10,11 +10,13 @@ public class Fire extends Pokemon{
 		// TODO Auto-generated constructor stub
 	}
 	@Override
-	public double checkEffectiveness(String opponentType) {
-		if(opponentType.equals("Water")) {  // Effective
+	public double checkEffectiveness(Pokemon yourPokemon, Pokemon opponentPokemon) {
+		if(yourPokemon.getPokemonType().equals("Fire") && opponentPokemon.getPokemonType().equals("Grass")) {  // Effective against grass
+			System.out.println("Attack Super Effective!");
 			return 1.5;
 		}else {
-			return 0;
+			System.out.println("Attack Neutral..");
+			return 1;
 		}
 	}
 }

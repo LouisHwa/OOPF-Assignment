@@ -11,11 +11,13 @@ public class Ground extends Pokemon{
 	}
 	
 	@Override
-	public double checkEffectiveness(String opponentType) {
-		if(opponentType.equals("Grass")) {  // Effective
+	public double checkEffectiveness(Pokemon yourPokemon, Pokemon opponentPokemon) {
+		if(yourPokemon.getPokemonType().equals("Ground") && opponentPokemon.getPokemonType().equals("Electric")) {  // Effective against electric
+			System.out.println("Attack Super Effective!");
 			return 1.5;
 		}else {
-			return 0;
+			System.out.println("Attack has No Effect.");
+			return 1;
 		}
 	}
 }
