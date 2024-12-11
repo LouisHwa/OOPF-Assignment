@@ -151,6 +151,7 @@ public abstract class Pokemon {
 		// Getting the zmove probability\
 		int probability = (int)(this.getZmoveProbability() * 100); // All are 0.1, convert 0.1 to whole number %
 		if(randnum >= 1 && randnum <= probability) {
+			
 			//Include this message in the battle class, here will be remove
 			System.out.println("Z-Move Available!!");
 			System.out.println("Press ENTER to use it!");
