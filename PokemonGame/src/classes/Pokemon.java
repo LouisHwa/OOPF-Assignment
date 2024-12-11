@@ -130,5 +130,22 @@ public abstract class Pokemon {
 			
 	}
 	
+	// Get attack name of that pokemon, return the attack damage. 
+	public int Attack() {
+		System.out.printf("%s uses %s. Deal: %s ATK!",this.getPokemonName(), this.getPokemonATKName(), this.getPokemonATK());
+		return this.getPokemonATK();
+	}
+	
+	// Increment the probability after each attack of that pokemon and this is to
+	// randomly check the probability of hitting it. 
+	public boolean checkZmove() {
+		return true;
+	}
+	
+	// Check whether pokemon is allow to use zmove or not
+	public boolean checkZmove(String pokemonZmoveProbability) {
+		return true;
+		
+	};
 	public abstract double checkEffectiveness(String opponentType);
 }
