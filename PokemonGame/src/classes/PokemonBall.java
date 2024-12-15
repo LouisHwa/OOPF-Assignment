@@ -42,24 +42,45 @@ public class PokemonBall {
 //  other methods
 	// ball generator
 	public static PokemonBall ballGenerator(PokemonBall [] balls) {
-		double rnd = new Random().nextDouble();
+		int rnd = new Random().nextInt(100);
 		
-		double[] randomBall = new double[balls.length];
+		int[] randomBall = new int[balls.length];
 		for (int i = 0; i < balls.length; i++) {
-			randomBall[i] = balls[i].getBallAppearingProbability();
+			randomBall[i] = (int) (balls[i].getBallAppearingProbability() * 100);
 			if (rnd <= randomBall[i]) {
+				
 				return balls[i];
+//				return String.format("You got a %s!", balls[i].getBallName());
 			}
 		}
-		
 		return balls[balls.length - 1];
+//		return String.format("You got a %s!", balls[balls.length - 1].getBallName());
 	}
+	
+	//catch success depending on ball success probability method
+	
+	public boolean checkSuccess(Pokemon pokemon) {
+		
+		if(pokemon.getPokemonRARITY()* PokemonBall.ballGenerator(null).getBallSuccessProbability() > .5) {
+			return true;
+		}
+		return false;
+	}
+	
+	
+	public void collect() {
+		
+	}
+	
+	
+	
+	
+	
 	
 //	toString
 	@Override
 	public String toString() {
-		return "PokemonBall [ballName=" + ballName + ", ballSuccessProbability=" + ballSuccessProbability
-				+ ", ballAppearingProbability=" + ballAppearingProbability + "]";
+		return String.format("You got a %s!", getBallName());
 	}
 	
 	
