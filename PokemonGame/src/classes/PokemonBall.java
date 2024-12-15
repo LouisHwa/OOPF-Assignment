@@ -71,17 +71,20 @@ public class PokemonBall {
 	public void collect() {
 		
 	}
+
 	
-	
-	
-	
-	
-	
-//	toString
+	//toString
 	@Override
 	public String toString() {
-		return String.format("You got a %s!", getBallName());
+		return "PokemonBall [ballName=" + ballName + ", ballSuccessProbability=" + ballSuccessProbability
+				+ ", ballAppearingProbability=" + ballAppearingProbability + "]";
 	}
+	
+	
+	
+	
+	
+
 	
 	
 	

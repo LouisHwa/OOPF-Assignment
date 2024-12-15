@@ -1,6 +1,5 @@
 package classes;
 
-import java.util.Random;
 
 public class pokeball_test {
 
@@ -8,9 +7,8 @@ public class pokeball_test {
 		
 		PokemonBall[] balls = {new Masterball(), new Ultraball(),new Greatball(), new Pokeball()};
 		PokemonBall playerball = PokemonBall.ballGenerator(balls);
-		System.out.println(playerball);
-		
-		
+
+		System.out.println("You got a " + playerball.getBallName() + "!");
 		
 		
 		
