@@ -62,6 +62,8 @@ public class PokemonBall {
 	public boolean checkSuccess(Pokemon pokemon, PokemonBall pokeballs) {
 		
 		if((pokemon.getPokemonRARITY() * pokeballs.getBallSuccessProbability()) > 1) {
+			//if use this need to change from boolean to String
+//			return String.format("Your succesfully captured %s with your %s", pokemon.getPokemonName(), pokeballs.getBallName());
 			return true;
 		}else {
 			return false;

@@ -12,16 +12,19 @@ public class pokeball_test {
 		System.out.println("You got a " + playerball.getBallName() + "!");
 		
 		Database db = new Database();
-		db.readPlayerFile();
 		db.readPokemonFile();
+		db.readPlayerFile();
 		
-//		ArrayList<Player> plist = db.getPlayerList();
-//		Player p1 = plist.get(0);
-//		p1.displayPlayerPokemon();
+		ArrayList<Player> plist = db.getPlayerList();
+		Player p1 = plist.get(1);
+		p1.displayPlayerPokemon();
+
+	
+		
 		
 		ArrayList<Pokemon> pokelist = db.getPokemonList();
 		Pokemon pp1 = pokelist.get(0);
-		System.out.println(pp1.getPokemonName());
+//		System.out.println(pp1.getPokemonName());
 		
 		
 		
@@ -29,8 +32,14 @@ public class pokeball_test {
 		boolean SR = playerball.checkSuccess(pp1, playerball);
 		
 		if(SR) {
+			ArrayList<Pokemon> e1 = p1.getPlayerPokemons();
+			e1.add(pp1);
+			p1.setPlayerPokemons(e1);
+			System.out.println("You succesfully captured " + pp1.getPokemonName() + " with your " + playerball.getBallName());
+			System.out.println( pp1.getPokemonName() + " has been added to your inventory \n");
+			p1.displayPlayerPokemon();
+			db.writeToFile();
 			
-			System.out.println("You succesfully captured " + pp1.getPokemonName() + "with your " + playerball.getBallName());
 			
 		}else {
 			System.out.println("You failed to capture " + pp1.getPokemonName());
