@@ -40,6 +40,7 @@ public class PokemonBall {
 	
 	
 //  other methods
+	
 	// ball generator
 	public static PokemonBall ballGenerator(PokemonBall [] balls) {
 		int rnd = new Random().nextInt(100);
@@ -50,21 +51,22 @@ public class PokemonBall {
 			if (rnd <= randomBall[i]) {
 				
 				return balls[i];
-//				return String.format("You got a %s!", balls[i].getBallName());
 			}
 		}
 		return balls[balls.length - 1];
-//		return String.format("You got a %s!", balls[balls.length - 1].getBallName());
+
 	}
 	
 	//catch success depending on ball success probability method
 	
-	public boolean checkSuccess(Pokemon pokemon) {
+	public boolean checkSuccess(Pokemon pokemon, PokemonBall pokeballs) {
 		
-		if(pokemon.getPokemonRARITY()* PokemonBall.ballGenerator(null).getBallSuccessProbability() > .5) {
+		if((pokemon.getPokemonRARITY() * pokeballs.getBallSuccessProbability()) > 1) {
 			return true;
+		}else {
+			return false;
 		}
-		return false;
+		
 	}
 	
 	
