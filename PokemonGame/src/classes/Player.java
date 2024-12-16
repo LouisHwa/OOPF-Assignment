@@ -1,102 +1,120 @@
 package classes;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Player {
-    private String playerName;
-    private String playerID;
-    private int playerScore;
-    private int playerBattlePlayed;
-    private List<Pokemon> playerPokemon;
-    private int Medal;
+	private String playerID;
+	private String playerName;
+	private int playerScore;
+	private int playerBattlePlayed;
+	private ArrayList<Pokemon> playerPokemons;
+	private int playerMedal;
+	
+	
+	public Player() {
+		
+	}
+	
+	
+	public Player(String playerID, String playerName) {
+		this(playerID, playerName, 0, 0, null, 0);
+	}
 
-    public Player(String playerName) {
-        this.playerName = playerName;
-        this.playerID = generatePlayerID();
-        this.playerScore = 0;
-        this.playerBattlePlayed = 0;
-        this.playerPokemon = new ArrayList<>();
-        this.Medal = 0;
-    }
+	public Player(String playerID, String playerName, int playerScore, int playerBattlePlayed,
+			ArrayList<Pokemon> playerPokemons, int playerMedal) {
+		this.playerID = playerID;
+		this.playerName = playerName;
+		this.playerScore = playerScore;
+		this.playerBattlePlayed = playerBattlePlayed;
+		this.playerPokemons = playerPokemons;
+		this.playerMedal = playerMedal;
+	}
 
-    public Player(String playerName, String playerID) {
-        this.playerName = playerName;
-        this.playerID = playerID;
-        this.playerScore = 0;
-        this.playerBattlePlayed = 0;
-        this.playerPokemon = new ArrayList<Pokemon>();
-        this.Medal = 0;
-    }
 
-    public Player(String playerName, String playerID, int playerScore, List<Pokemon> playerPokemon) {
-        this.playerName = playerName;
-        this.playerID = playerID;
-        this.playerScore = playerScore;
-        this.playerBattlePlayed = 0;
-        this.playerPokemon = playerPokemon;
-        this.Medal = 0;
-    }
+	public String getPlayerName() {
+		return playerName;
+	}
 
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
-    }
-    
-    public String getPlayerName() {
-        return playerName;
-    }
 
-    public void setPlayerID(String playerID) {
-        this.playerID = playerID;
-    }
-    
-    public String getPlayerID() {
-        return playerID;
-    }
+	public void setPlayerName(String playerName) {
+		this.playerName = playerName;
+	}
 
-    public void setPlayerScore(int playerScore) {
-        this.playerScore = playerScore;
-    }
 
-    public int getPlayerScore() {
-        return playerScore;
-    }
-    
-    public void setPlayerBattlePlayed(int playerBattlePlayed) {
-        this.playerBattlePlayed = playerBattlePlayed;
-    }
-    
-    public int getPlayerBattlePlayed() {
-        return playerBattlePlayed;
-    }
+	public String getPlayerID() {
+		return playerID;
+	}
 
-    public List<Pokemon> getPlayerPokemon() {
-        return playerPokemon;
-    }
+	public void setPlayerID(String playerID) {
+		this.playerID = playerID;
+	}
 
-    public void setPlayerPokemon(List<Pokemon> playerPokemon) {
-        this.playerPokemon = playerPokemon;
-    }
 
-    public int getMedal() {
-        return Medal;
-    }
+	public int getPlayerScore() {
+		return playerScore;
+	}
 
-    public void setMedal(int medal) {
-        this.Medal = medal;
-    }
 
-    public void displayMedal() {
-        System.out.println("Medals: " + Medal);
+	public void setPlayerScore(int playerScore) {
+		this.playerScore = playerScore;
+	}
+
+
+	public int getPlayerBattlePlayed() {
+		return playerBattlePlayed;
+	}
+
+
+	public void setPlayerBattlePlayed(int playerBattlePlayed) {
+		this.playerBattlePlayed = playerBattlePlayed;
+	}
+
+
+	public ArrayList<Pokemon> getPlayerPokemons() {
+		return playerPokemons;
+	}
+
+
+	public void setPlayerPokemons(ArrayList<Pokemon> playerPokemons) {
+		this.playerPokemons = playerPokemons;
+	}
+
+
+	public int getPlayerMedal() {
+		return playerMedal;
+	}
+
+
+	public void setPlayerMedal(int playerMedal) {
+		this.playerMedal = playerMedal;
+	}
+	
+	@Override
+	public String toString() {
+		return String.format(
+				"Player [playerID=%s, playerName=%s, playerScore=%s, playerBattlePlayed=%s, playerPokemons=%s, playerMedal=%s]",
+				playerID, playerName, playerScore, playerBattlePlayed, playerPokemons, playerMedal);
+	}
+	
+	public void displayPlayerPokemon() {
+		int counter = 1;
+		System.out.println("Your Pokemons: ");
+		for(Pokemon pokemon: playerPokemons) {
+			System.out.printf("%s. %s\n", counter, pokemon.getPokemonName());
+			counter++;
+		}
+	}
+
+
+	public void displayMedal() {
+        System.out.println("Medals: " + playerMedal);
     }
 
     public void displayBattlePlayed() {
         System.out.println("Battles Played: " + playerBattlePlayed);
     }
 
-    private String generatePlayerID() {
-        return "PLAYER" + (int) (Math.random() * 10000);
-    }
-
+	
+	
 }
 
