@@ -29,7 +29,8 @@ public class pokeball_test {
 		boolean SR = playerball.checkSuccess(pp1, playerball);
 		
 		if(SR) {
-			System.out.println("You succesfully captured " + pp1.getPokemonName());
+			
+			System.out.println("You succesfully captured " + pp1.getPokemonName() + "with your " + playerball.getBallName());
 			
 		}else {
 			System.out.println("You failed to capture " + pp1.getPokemonName());
