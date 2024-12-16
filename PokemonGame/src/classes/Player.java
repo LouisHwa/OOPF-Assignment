@@ -15,7 +15,6 @@ public class Player {
 		
 	}
 	
-	
 	public Player(String playerID, String playerName) {
 		this(playerID, playerName, 0, 0, null, 0);
 	}
