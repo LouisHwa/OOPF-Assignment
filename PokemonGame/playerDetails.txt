@@ -1,5 +1,5 @@
 P001,Louis,47180,24,Charizard-Articuno-Moltres-Venusaur-Pikachu,372
-P002,Vincent,23467,6,Rapidash-Jolteon-Marowak-Charizard,34
+P002,Vincent,23467,6,Rapidash-Jolteon-Marowak,34
 P003,Yu Teng,12367,2,Machamp-Pikachu,12
 P004,Huai Yin,44789,23,Jolteon-Marowak-Charizard-Starmie,222
 P005,Jacqualeyn,52345,30,Charmender-Pikachu,480

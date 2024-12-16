@@ -1,4 +1,6 @@
 package classes;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 public class PokemonBall {
 	//attributes
@@ -7,6 +9,10 @@ public class PokemonBall {
 	private double ballAppearingProbability;
 
 	//constructor
+	public PokemonBall() {
+		
+	}
+	
 	public PokemonBall(String ballName, double ballSuccessProbability, double ballAppearingProbability) {
 		this.ballName = ballName;
 		this.ballSuccessProbability = ballSuccessProbability;
@@ -43,7 +49,7 @@ public class PokemonBall {
 	
 	// ball generator
 	public static PokemonBall ballGenerator(PokemonBall [] balls) {
-		int rnd = new Random().nextInt(100);
+		int rnd = new Random().nextInt(100) + 1;
 		
 		int[] randomBall = new int[balls.length];
 		for (int i = 0; i < balls.length; i++) {
@@ -58,13 +64,15 @@ public class PokemonBall {
 	}
 	
 	//catch success depending on ball success probability method
-	
 	public boolean checkSuccess(Pokemon pokemon, PokemonBall pokeballs) {
+		int rnd = new Random().nextInt(100) + 1;
+		double successR = (pokeballs.getBallSuccessProbability() / pokemon.getPokemonRARITY()) * 100;
 		
-		if((pokemon.getPokemonRARITY() * pokeballs.getBallSuccessProbability()) > 1) {
+		if(successR >= rnd) {
 			//if use this need to change from boolean to String
 //			return String.format("Your succesfully captured %s with your %s", pokemon.getPokemonName(), pokeballs.getBallName());
 			return true;
+			
 		}else {
 			return false;
 		}
@@ -83,6 +91,7 @@ public class PokemonBall {
 		return "PokemonBall [ballName=" + ballName + ", ballSuccessProbability=" + ballSuccessProbability
 				+ ", ballAppearingProbability=" + ballAppearingProbability + "]";
 	}
+
 	
 	
 	
