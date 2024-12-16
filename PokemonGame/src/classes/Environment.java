@@ -13,7 +13,6 @@ public class Environment {
 	private Volcano volcano;
 	private Desert desert;
 	private Thunderstorm thunderstorm;
-	
 
 	// constructor
 	public Environment(ArrayList<String> environments, String currentEnvironment, Jungle jungle, Ocean ocean,
