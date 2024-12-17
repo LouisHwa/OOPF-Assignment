@@ -1,15 +1,20 @@
 package classes;
 
-import java.util.ArrayList;
-
 public class Thunderstorm extends Environment{
 	
-	public Thunderstorm() {
-		super(new ArrayList<String>(), "Thunderstorm", null, null, null, null, null);
+	@Override
+	public void applyBuff(Pokemon pokemon) {
+		if (pokemon.getPokemonType().equals("Electric")) {
+			pokemon.setPokemonATK(pokemon.getPokemonATK() + 10);
+			System.out.println("Thunderstorm buff applied! ATK increased by 10. New ATK: " + pokemon.getPokemonATK());
+		} 
+		else {
+			System.out.println("No buff applied! Pokemon type does not match Thunderstorm environmet");
+		}
 	}
 	
-	public void ApplyBuff() {
-		System.out.println("Buff applied for Thunderstorm: Electric Buff");
-	}
-
+	@Override
+    public String getEnvironmentType() {
+        return "Electric";
+    }
 }

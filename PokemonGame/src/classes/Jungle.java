@@ -1,15 +1,21 @@
 package classes;
 
-import java.util.ArrayList;
-
 public class Jungle extends Environment{
-	public Jungle() {
-		super(new ArrayList<String>(), "Jungle", null, null, null, null, null);
+	
+	@Override
+	public void applyBuff(Pokemon pokemon) {
+		if (pokemon.getPokemonType().equals("Grass")) {
+			pokemon.setPokemonATK(pokemon.getPokemonATK() + 10);
+			System.out.println("Grass buff applied! ATK increased by 10. New ATK: " + pokemon.getPokemonATK());
+		} 
+		else {
+			System.out.println("No buff applied! Pokemon type does not match Grass environmet");
+		}
 	}
 	
-	public void ApplyBuff() {
-		System.out.println("Buff applied for Jungle: Green Buff");
-	}
-	
+	@Override
+    public String getEnvironmentType() {
+        return "Grass";
+    }
 	
 }

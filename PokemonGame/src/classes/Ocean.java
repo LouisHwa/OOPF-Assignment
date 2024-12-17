@@ -1,15 +1,20 @@
 package classes;
 
-import java.util.ArrayList;
-
 public class Ocean extends Environment{
 	
-	public Ocean() {
-		super(new ArrayList<String>(), "Ocean", null, null, null, null, null);
+	@Override
+	public void applyBuff(Pokemon pokemon) {
+		if (pokemon.getPokemonType().equals("Water")) {
+			pokemon.setPokemonATK(pokemon.getPokemonATK() + 10);
+			System.out.println("Ocean buff applied! ATK increased by 10. New ATK: " + pokemon.getPokemonATK());
+		} 
+		else {
+			System.out.println("No buff applied! Pokemon type does not match Ocean environmet");
+		}
 	}
 	
-	public void ApplyBuff() {
-		System.out.println("Buff applied for Ocean: Water Buff!");
-	}
-
+	@Override
+    public String getEnvironmentType() {
+        return "Water";
+    }
 }

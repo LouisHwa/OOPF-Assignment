@@ -1,31 +1,17 @@
 package classes;
 
-import java.util.ArrayList;
 import java.util.Random;
 
-public class Environment {
+public abstract class Environment {
 	// attributes
-	private ArrayList<String> Environments = new ArrayList<String>();
-	private String CurrentEnvironment;
+	private static String[] Environments = {"Jungle", "Ocean", "Volcano", "Desert", "ThunderStorm"};
+	private static Environment currentEnvironment;
 
 	private Jungle jungle;
 	private Ocean ocean;
 	private Volcano volcano;
 	private Desert desert;
 	private Thunderstorm thunderstorm;
-
-	// constructor
-	public Environment(ArrayList<String> environments, String currentEnvironment, Jungle jungle, Ocean ocean,
-			Volcano volcano, Desert desert, Thunderstorm thunderstorm) {
-		super();
-		Environments = environments;
-		CurrentEnvironment = currentEnvironment;
-		this.jungle = jungle;
-		this.ocean = ocean;
-		this.volcano = volcano;
-		this.desert = desert;
-		this.thunderstorm = thunderstorm;
-	}
 
 	// setters/getters
 	public Jungle getJungle() {
@@ -67,35 +53,40 @@ public class Environment {
 	public void setThunderstorm(Thunderstorm thunderstorm) {
 		this.thunderstorm = thunderstorm;
 	}
+	
+	//Apply buff
+	public abstract void applyBuff(Pokemon pokemon);
+	
+	//Get the environment type (match with pokemonType)
+	public abstract String getEnvironmentType();
 
+	//other method
 	//Method to select a random environment
-	public void environmentGenerator() {
+	public static Environment environmentGenerator() {
 		Random random = new Random();
-		int choice = random.nextInt(Environments.size());
-		CurrentEnvironment = Environments.get(choice);
+		int choice = random.nextInt(Environments.length);
+		String selectedEnvironment = Environments[choice];
 		
-		System.out.println("Selected Environment: " + CurrentEnvironment);
-		
-		//Apply buff on the selected environment
-		switch (CurrentEnvironment) {
+		switch (selectedEnvironment) {
 			case "Jungle":
-				jungle.ApplyBuff();
+				currentEnvironment = new Jungle();
 				break;
 			case "Ocean":
-				ocean.ApplyBuff();
+				currentEnvironment = new Ocean();
 				break;
 			case "Volcano":
-				volcano.ApplyBuff();
+				currentEnvironment = new Volcano();
 				break;
 			case "Desert":
-				desert.ApplyBuff();
+				currentEnvironment = new Desert();
 				break;
 			case "Thunderstorm":
-				thunderstorm.ApplyBuff();
-				break;
-			default:
-				System.out.println("No environment selected.");
+				currentEnvironment = new Thunderstorm();
+				break;				
 		}
+		
+		System.out.println("Current Environment: " + selectedEnvironment);
+		return currentEnvironment;
 		
 	}
 	

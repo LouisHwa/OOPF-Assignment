@@ -1,15 +1,21 @@
 package classes;
 
-import java.util.ArrayList;
-
 public class Volcano extends Environment{
 	
-	public Volcano() {
-		super(new ArrayList<String>(), "Volcano", null, null, null, null, null);
+	@Override
+	public void applyBuff(Pokemon pokemon) {
+		if (pokemon.getPokemonType().equals("Fire")) {
+			pokemon.setPokemonATK(pokemon.getPokemonATK() + 10);
+			System.out.println("Volcano buff applied! ATK increased by 10. New ATK: " + pokemon.getPokemonATK());
+		} 
+		else {
+			System.out.println("No buff applied! Pokemon type does not match Volcano environmet");
+		}
 	}
 	
-	public void ApplyBuff() {
-		System.out.println("Buff applied for Volcano: Heat Buff");
-	}
-
+	@Override
+    public String getEnvironmentType() {
+        return "Fire";
+    }
+	
 }
