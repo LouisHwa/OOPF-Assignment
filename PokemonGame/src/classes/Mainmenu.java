@@ -2,21 +2,20 @@ package classes;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class MainMenu {
-    // Field: type (used to represent the menu type or category)
+public class Mainmenu {
     private String type;
 
-    // Lists to store player credentials
+
     private ArrayList<String> usernames = new ArrayList<>();
     private ArrayList<String> passwords = new ArrayList<>();
-    private String loggedInPlayer = null; // Track the currently logged-in player
+    private String loggedInPlayer = null; 
 
-    // Constructor to initialize the Main Menu
-    public MainMenu(String type) {
+ 
+    public Mainmenu(String type) {
         this.type = type;
     }
 
-    // Method for player sign-up
+
     public void playerSignUp() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("\n--- Player Sign-Up ---");
@@ -24,7 +23,7 @@ public class MainMenu {
         System.out.print("Enter a username: ");
         String username = scanner.nextLine();
 
-        // Check if username already exists
+
         if (usernames.contains(username)) {
             System.out.println("Username already exists! Try a different one.");
             return;
@@ -33,13 +32,13 @@ public class MainMenu {
         System.out.print("Enter a password: ");
         String password = scanner.nextLine();
 
-        // Save player credentials
+  
         usernames.add(username);
         passwords.add(password);
         System.out.println("Sign-up successful! You can now log in.");
     }
 
-    // Method for player login
+ 
     public void playerLogin() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("\n--- Player Login ---");
@@ -60,7 +59,7 @@ public class MainMenu {
         }
     }
 
-    // Method to display player information
+
     public void displayPlayerInformation() {
         System.out.println("\n--- Player Information ---");
 
@@ -72,9 +71,9 @@ public class MainMenu {
         }
     }
 
-    // Main method to demonstrate the Main Menu
+   
     public static void main(String[] args) {
-        MainMenu menu = new MainMenu("Pokémon Adventure");
+        Mainmenu menu = new Mainmenu("Pokémon Adventure");
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -86,7 +85,7 @@ public class MainMenu {
 
             System.out.print("Choose an option: ");
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume the newline character
+            scanner.nextLine(); 
 
             switch (choice) {
                 case 1:
