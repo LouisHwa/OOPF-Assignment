@@ -66,7 +66,13 @@ public class PokemonBall {
 	//catch success depending on ball success probability method
 	public boolean checkSuccess(Pokemon pokemon, PokemonBall pokeballs) {
 		int rnd = new Random().nextInt(100) + 1;
-		double successR = pokeballs.getBallSuccessProbability() * (pokemon.getPokemonRARITY()/5);
+		
+		double successR;
+		if(pokeballs.getBallName().equals("Masterball")) {
+			successR = 100;
+		}else {
+			successR = (pokeballs.getBallSuccessProbability() - ((pokemon.getPokemonRARITY() - 1) * 0.1)) * 100;
+		};
 		
 		if(successR >= rnd) {
 			//if use this need to change from boolean to String

@@ -49,6 +49,7 @@ public class pokeball_test {
 		
 		
 		for(int i = 0; i < 10; i++) {
+			System.out.println(playerball.getBallName());
 			System.out.println(playerball);
 			boolean success = pb.checkSuccess(pp1, playerball);
 			if(success) {
