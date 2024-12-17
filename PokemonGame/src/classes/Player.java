@@ -15,7 +15,6 @@ public class Player {
 		
 	}
 	
-	
 	public Player(String playerID, String playerName) {
 		this(playerID, playerName, 0, 0, null, 0);
 	}
@@ -95,8 +94,26 @@ public class Player {
 				"Player [playerID=%s, playerName=%s, playerScore=%s, playerBattlePlayed=%s, playerPokemons=%s, playerMedal=%s]",
 				playerID, playerName, playerScore, playerBattlePlayed, playerPokemons, playerMedal);
 	}
+	
+	public void displayPlayerPokemon() {
+		int counter = 1;
+		System.out.println("Your Pokemons: ");
+		for(Pokemon pokemon: playerPokemons) {
+			System.out.printf("%s. %s\n", counter, pokemon.getPokemonName());
+			counter++;
+		}
+	}
+
+
+	public void displayMedal() {
+        System.out.println("Medals: " + playerMedal);
+    }
+
+    public void displayBattlePlayed() {
+        System.out.println("Battles Played: " + playerBattlePlayed);
+    }
 
 	
 	
-	
 }
+

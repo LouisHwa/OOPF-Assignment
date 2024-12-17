@@ -11,11 +11,14 @@ public class Electric extends Pokemon{
 	}
 	
 	@Override
-	public double checkEffectiveness(String opponentType) {
-		if(opponentType.equals("Ground")) {  // Effective
+	public double checkEffectiveness(Pokemon yourPokemon, Pokemon opponentPokemon) {
+		if(yourPokemon.getPokemonType().equals("Electric") && opponentPokemon.getPokemonType().equals("Water")) {  // Effective against grass
+			System.out.println("Attack Super Effective!");
 			return 1.5;
 		}else {
-			return 0;
+			System.out.println("Attack Neutral..");
+			System.out.println("Electric");
+			return 1;
 		}
 	}
 }

@@ -10,11 +10,14 @@ public class Water extends Pokemon{
 		// TODO Auto-generated constructor stub
 	}
 	
-	public double checkEffectiveness(String opponentType) {
-		if(opponentType.equals("Electric")) {  // Effective
+	public double checkEffectiveness(Pokemon yourPokemon, Pokemon opponentPokemon) {
+		if(yourPokemon.getPokemonType().equals("Water") && opponentPokemon.getPokemonType().equals("Fire")) {  // Effective against fire
+			System.out.println("Attack Super Effective!");
 			return 1.5;
 		}else {
-			return 0;
+			System.out.println("Attack Neutral..");
+			System.out.println("Water");
+			return 1;
 		}
 	}
 }

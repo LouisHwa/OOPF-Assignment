@@ -1,5 +1,6 @@
 package classes;
 
+import java.util.Random;
 
 public abstract class Pokemon {
 	private String pokemonID;
@@ -67,8 +68,8 @@ public abstract class Pokemon {
 		return pokemonATK;
 	}
 
-	public void setPokemonATK(int pokemonATK) {
-		this.pokemonATK = pokemonATK;
+	public void setPokemonATK(double pokemonATK) {
+		this.pokemonATK = (int) pokemonATK;
 	}
 
 	public String getPokemonATKName() {
@@ -130,5 +131,37 @@ public abstract class Pokemon {
 			
 	}
 	
-	public abstract double checkEffectiveness(String opponentType);
+	// Get attack name of that pokemon, return the attack damage. 
+	public void Attack(Pokemon yourPokemon,Pokemon opponentPokemon) {
+		// Pokemon attack display
+		System.out.printf("%s uses %s on %s.\n",yourPokemon.getPokemonName(), yourPokemon.getPokemonATKName(), opponentPokemon.getPokemonName());
+		
+		// Display Attack 
+		int attack = (int)((yourPokemon.checkEffectiveness(yourPokemon, opponentPokemon) * yourPokemon.getPokemonATK()) - opponentPokemon.getPokemonDEF());
+		System.out.printf("Deals %s ATK on %s!\n",attack, opponentPokemon.getPokemonName());
+		opponentPokemon.setPokemonHP(pokemonHP - attack);
+	}
+	
+	// Increment the probability after each attack of that pokemon and this is to
+	// randomly check the probability of hitting it. 
+	public boolean checkZmove() {
+		Random rand = new Random();
+		int randnum = rand.nextInt(100) + 1; // Generates number between 1-100
+		
+		// Getting the zmove probability\
+		int probability = (int)(this.getZmoveProbability() * 100); // All are 0.1, convert 0.1 to whole number %
+		if(randnum >= 1 && randnum <= probability) {
+			
+			//Include this message in the battle class, here will be remove
+			System.out.println("Z-Move Available!!");
+			System.out.println("Press ENTER to use it!");
+			return true;
+		}else {
+			this.zmoveProbability += 0.1;
+			return false;
+		}
+	}
+	
+	// Check whether pokemon is allow to use zmove or not
+	public abstract double checkEffectiveness(Pokemon yourPokemon, Pokemon opponentPokemon);
 }
