@@ -15,7 +15,6 @@ public class Player {
 		
 	}
 	
-	
 	public Player(String playerID, String playerName) {
 		this(playerID, playerName, 0, 0, null, 0);
 	}
@@ -106,7 +105,15 @@ public class Player {
 	}
 
 
-	
+	public void displayMedal() {
+        System.out.println("Medals: " + playerMedal);
+    }
+
+    public void displayBattlePlayed() {
+        System.out.println("Battles Played: " + playerBattlePlayed);
+    }
+
 	
 	
 }
+
