@@ -101,7 +101,8 @@ public class MainMenu {
                 case 4:
                     System.out.println("Exiting... Goodbye!");
                     return;
-
+                default:
+                    System.out.println("Invalid choice. Please try again.");
             }
         }
     }
