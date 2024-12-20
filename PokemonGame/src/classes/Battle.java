@@ -165,8 +165,11 @@ public class Battle {
     	Queue<Pokemon> team1 = new LinkedList<>(userPokemons);
     	Queue<Pokemon> team2 = new LinkedList<>(wildPokemons);
     	
-    	stadium.applyBuff(userPokemons.get(0));
-    	stadium.applyBuff(userPokemons.get(1));
+    	if(stadium != null) {
+    		stadium.applyBuff(userPokemons.get(0));
+    		stadium.applyBuff(userPokemons.get(1));
+    	}
+    	
     	System.out.println("");
     	
     	// Choosing who attack first

@@ -45,6 +45,7 @@ public class Database {
 	// Reads all the details in pokemon file and stored in pokemonList
 	public void readPokemonFile() {
 		try {
+			pokemonList = null;
 			Scanner reader = new Scanner(Database.pokemonFile);
 			
 			while(reader.hasNextLine()) {
@@ -81,6 +82,7 @@ public class Database {
 	// Reads all the details in player file and stored in playerList
 	public void readPlayerFile() {
 		try {
+			playerList = null;
 			Scanner reader = new Scanner(Database.playerFile);
 			while(reader.hasNextLine()) {
 				String lines = reader.nextLine();

@@ -1,4 +1,4 @@
-P001,Louis,76243,26,Charizard-Articuno-Moltres-Venusaur-Pikachu-Starmie-Bulbasaur-Helioptile,3387
+P001,Louis,77671,27,Charizard-Articuno-Moltres-Venusaur-Pikachu-Starmie-Bulbasaur-Helioptile-Marowak,3545
 P002,Vincent,23467,6,Rapidash-Jolteon-Marowak-Rapidash-Jolteon-Marowak,34
 P003,Yu Teng,12367,2,Machamp-Pikachu-Machamp-Pikachu,12
 P004,Huai Yin,44789,23,Jolteon-Marowak-Charizard-Starmie-Jolteon-Marowak-Charizard-Starmie,222
