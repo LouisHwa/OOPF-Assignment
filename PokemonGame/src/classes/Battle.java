@@ -7,12 +7,11 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Battle {
-    private Pokemon playerPokemon;
-    private Pokemon wildPokemon;
     Database db = new Database();
     Scanner scanner = new Scanner(System.in);
     ArrayList<Pokemon> pokelist = db.getPokemonList();
     ArrayList<Player> playerlist = db.getPlayerList();
+    AsciiArt art = new AsciiArt();
     
     
     
@@ -74,22 +73,8 @@ public class Battle {
     	}while(randnum1 == randnum2);
 		Pokemon wildPokemon1 = pokelist.get(randnum1);
 		Pokemon wildPokemon2 = pokelist.get(randnum2);
-		System.out.println("=======             __   __                            _                       \r\n"
-				+ "            \\ \\ / /__  _   _ _ __  __   _____ (_) ___ ___              \r\n"
-				+ "             \\ V / _ \\| | | | '__| \\ \\ / / _ \\| |/ __/ _ \\             \r\n"
-				+ "              | | (_) | |_| | |     \\ V / (_) | | (_|  __/             \r\n"
-				+ "              |_|\\___/ \\__,_|_|      \\_/ \\___/|_|\\___\\___|  ____       \r\n"
-				+ "     ___ _   _ _ __ ___  _ __ ___   ___  _ __   ___  __| | |___ \\      \r\n"
-				+ "    / __| | | | '_ ` _ \\| '_ ` _ \\ / _ \\| '_ \\ / _ \\/ _` |   __) |     \r\n"
-				+ "    \\__ \\ |_| | | | | | | | | | | | (_) | | | |  __/ (_| |  / __/      \r\n"
-				+ "    |___/\\__,_|_| |_| |_|_| |_| |_|\\___/|_| |_|\\___|\\__,_| |_____|     \r\n"
-				+ "          _ _     _               _                                  _ \r\n"
-				+ "__      _(_) | __| |  _ __   ___ | | _____ _ __ ___   ___  _ __  ___| |\r\n"
-				+ "\\ \\ /\\ / / | |/ _` | | '_ \\ / _ \\| |/ / _ \\ '_ ` _ \\ / _ \\| '_ \\/ __| |\r\n"
-				+ " \\ V  V /| | | (_| | | |_) | (_) |   <  __/ | | | | | (_) | | | \\__ \\_|\r\n"
-				+ "  \\_/\\_/ |_|_|\\__,_| | .__/ \\___/|_|\\_\\___|_| |_| |_|\\___/|_| |_|___(_)\r\n"
-				+ "                     |_|                                                =======");
-    	System.out.println("1.\n" + wildPokemon1.pokemonInfo());
+		art.voiceSummoned();
+		System.out.println("1.\n" + wildPokemon1.pokemonInfo());
 		System.out.println("2.\n" + wildPokemon2.pokemonInfo());
 		System.out.println("=====================================================\n");
 		// Battle Begins
@@ -236,27 +221,16 @@ public class Battle {
         	
     	}
     	if (team1.isEmpty()) {
-            System.out.println("All your Pokemon have fallen! __        ___ _     _   ____       _                               \r\n"
-            		+ "\\ \\      / (_) | __| | |  _ \\ ___ | | _____ _ __ ___   ___  _ __   \r\n"
-            		+ " \\ \\ /\\ / /| | |/ _` | | |_) / _ \\| |/ / _ \\ '_ ` _ \\ / _ \\| '_ \\  \r\n"
-            		+ "  \\ V  V / | | | (_| | |  __/ (_) |   <  __/ | | | | | (_) | | | | \r\n"
-            		+ "   \\_/\\_/  |_|_|\\__,_| |_|   \\___/|_|\\_\\___|_| |_| |_|\\___/|_| |_| \r\n"
-            		+ "                    __      _(_)_ __   | |                         \r\n"
-            		+ "                    \\ \\ /\\ / / | '_ \\  | |                         \r\n"
-            		+ "                     \\ V  V /| | | | | |_|                         \r\n"
-            		+ "                      \\_/\\_/ |_|_| |_| (_)                         ");
+    		art.wildWin(); // art
             score = 0;
             medal = 0;
         } else {
-            System.out.println("All wild Pokemon have fallen! __   __                     _         _ \r\n"
-            		+ "\\ \\ / /__  _   _  __      _(_)_ __   | |\r\n"
-            		+ " \\ V / _ \\| | | | \\ \\ /\\ / / | '_ \\  | |\r\n"
-            		+ "  | | (_) | |_| |  \\ V  V /| | | | | |_|\r\n"
-            		+ "  |_|\\___/ \\__,_|   \\_/\\_/ |_|_| |_| (_)");
-            
+            art.youWin(); // art
             score = 10000 / (counter-1);
             medal = score / (counter+1);
         }    	
+    	
+    	art.battleEnd(); // art
         System.out.printf("Score increased! +%dpts\n", score);
         System.out.printf("Medal rewarded! +%d medals\n\n", medal);
     	currentPlayer.setPlayerScore(currentPlayer.getPlayerScore() + score);
@@ -265,21 +239,7 @@ public class Battle {
 		
 		// Catch Pokemon If win
 		if (!team1.isEmpty()) {
-			System.out.println(" _____ _                  _                    _       _               \\r\\n\"\r\n"
-					+ "				+ \"|_   _(_)_ __ ___   ___  | |_ ___     ___ __ _| |_ ___| |__            \\r\\n\"\r\n"
-					+ "				+ \"  | | | | '_ ` _ \\\\ / _ \\\\ | __/ _ \\\\   / __/ _` | __/ __| '_ \\\\           \\r\\n\"\r\n"
-					+ "				+ \"  | | | | | | | | |  __/ | || (_) | | (_| (_| | || (__| | | |          \\r\\n\"\r\n"
-					+ "				+ \"  |_| |_|_| |_| |_|\\\\___|  \\\\__\\\\___/   \\\\___\\\\__,_|\\\\__\\\\___|_| |_|          \\r\\n\"\r\n"
-					+ "				+ \"            | |_| |__   ___  __      _(_) | __| |                      \\r\\n\"\r\n"
-					+ "				+ \"            | __| '_ \\\\ / _ \\\\ \\\\ \\\\ /\\\\ / / | |/ _` |                      \\r\\n\"\r\n"
-					+ "				+ \"            | |_| | | |  __/  \\\\ V  V /| | | (_| |                      \\r\\n\"\r\n"
-					+ "				+ \"             \\\\__|_| |_|\\\\___|   \\\\_/\\\\_/ |_|_|\\\\__,_|     _                \\r\\n\"\r\n"
-					+ "				+ \"         _ __   ___ | | _____ _ __ ___   ___  _ __   | |               \\r\\n\"\r\n"
-					+ "				+ \"        | '_ \\\\ / _ \\\\| |/ / _ \\\\ '_ ` _ \\\\ / _ \\\\| '_ \\\\  | |               \\r\\n\"\r\n"
-					+ "				+ \"        | |_) | (_) |   <  __/ | | | | | (_) | | | | |_|               \\r\\n\"\r\n"
-					+ "				+ \"        | .__/ \\\\___/|_|\\\\_\\\\___|_| |_| |_|\\\\___/|_| |_| (_)               \\r\\n\"\r\n"
-					+ "				+ \"        |_|                                                            ");
-			
+			art.catchPokemon();
 			PokemonBall[] balls = {new Masterball(), new Ultraball(),new Greatball(), new Pokeball()};
 			PokemonBall playerball = PokemonBall.ballGenerator(balls);
 			System.out.println("You got a " + playerball.getBallName() + "!");
@@ -371,21 +331,12 @@ public class Battle {
     	db.readPokemonFile();
     	db.readPlayerFile();
     	int counter = 1;
-		System.out.println("\n _                   _           _                         _ \\r\\n\"\r\n"
-				+ "				+ \"| |    ___  __ _  __| | ___ _ __| |__   ___   __ _ _ __ __| |\\r\\n\"\r\n"
-				+ "				+ \"| |   / _ \\\\/ _` |/ _` |/ _ \\\\ '__| '_ \\\\ / _ \\\\ / _` | '__/ _` |\\r\\n\"\r\n"
-				+ "				+ \"| |__|  __/ (_| | (_| |  __/ |  | |_) | (_) | (_| | | | (_| |\\r\\n\"\r\n"
-				+ "				+ \"|_____\\\\___|\\\\__,_|\\\\__,_|\\\\___|_|  |_.__/ \\\\___/ \\\\__,_|_|  \\\\__,_|");
+    	art.leaderboard(); // art
 		for(Player top5score: db.getTopFive()) {
 			System.out.printf("%s. ID: %s, Score: %s, Medal: %s\n", counter,top5score.getPlayerID(),top5score.getPlayerScore(), top5score.getPlayerMedal());
 			counter++;
 		};
-		System.out.println("==================== ____        _   _   _        _____           _          _   _ \\r\\n\"\r\n"
-				+ "				+ \"| __ )  __ _| |_| |_| | ___  | ____|_ __   __| | ___  __| | | |\\r\\n\"\r\n"
-				+ "				+ \"|  _ \\\\ / _` | __| __| |/ _ \\\\ |  _| | '_ \\\\ / _` |/ _ \\\\/ _` | | |\\r\\n\"\r\n"
-				+ "				+ \"| |_) | (_| | |_| |_| |  __/ | |___| | | | (_| |  __/ (_| | |_|\\r\\n\"\r\n"
-				+ "				+ \"|____/ \\\\__,_|\\\\__|\\\\__|_|\\\\___| |_____|_| |_|\\\\__,_|\\\\___|\\\\__,_| (_)======================\n");
-    }
+	}
     
     public Environment environmentGenerator() {
 		String[] Environments = {"Jungle", "Ocean", "Volcano", "Desert", "ThunderStorm"};

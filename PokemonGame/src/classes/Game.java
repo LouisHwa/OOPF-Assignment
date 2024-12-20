@@ -10,6 +10,7 @@ public class Game {
 		Mainmenu menu = new Mainmenu();
 		Database db = new Database();
 		Battle battle = new Battle();
+		AsciiArt art = new AsciiArt();
 		ArrayList<Pokemon> pokemonList= db.getPokemonList();
 		ArrayList<Player> playerList = db.getPlayerList();
 		int currentPlayerIndex;
@@ -27,7 +28,7 @@ public class Game {
 				
 					// User choose to create account 
 		            case 1:
-		            	System.out.println()
+		            	System.out.println();
 		                menu.playerSignUp();
 		                break;
 		                
@@ -58,19 +59,7 @@ public class Game {
 			                			ArrayList<Pokemon> battlePokemons = new ArrayList<Pokemon>();
 			                			ArrayList<Pokemon> battleWildPokemons = new ArrayList<Pokemon>();
 			                			
-			                			System.out.println("\n    __        __   _                            _               \r\n"
-			                					+ "    \\ \\      / /__| | ___ ___  _ __ ___   ___  | |_ ___         \r\n"
-			                					+ "     \\ \\ /\\ / / _ \\ |/ __/ _ \\| '_ ` _ \\ / _ \\ | __/ _ \\        \r\n"
-			                					+ "      \\ V  V /  __/ | (_| (_) | | | | | |  __/ | || (_) |       \r\n"
-			                					+ " ____  \\_/\\_/_\\___|_|\\___\\___/|_|_|_| |_|\\___|  \\__\\___/  _     \r\n"
-			                					+ "| __ )  __ _| |_| |_| | ___   ( _ )    / ___|__ _| |_ ___| |__  \r\n"
-			                					+ "|  _ \\ / _` | __| __| |/ _ \\  / _ \\/\\ | |   / _` | __/ __| '_ \\ \r\n"
-			                					+ "| |_) | (_| | |_| |_| |  __/ | (_>  < | |__| (_| | || (__| | | |\r\n"
-			                					+ "|____/ \\__,_|\\__|\\__|_|\\___|  \\___/\\/  \\____\\__,_|\\__\\___|_| |_|\r\n"
-			                					+ "                  |  \\/  | ___   __| | ___                      \r\n"
-			                					+ "                  | |\\/| |/ _ \\ / _` |/ _ \\                     \r\n"
-			                					+ "                  | |  | | (_) | (_| |  __/                     \r\n"
-			                					+ "                  |_|  |_|\\___/ \\__,_|\\___|                     "); // ASCII IT
+			                			art.welcomeBattleandCatch(); // art
 			                			// Checks if player has a pokemon
 			                			if(currentPlayer.getPlayerPokemons() == null) {
 			                				Pokemon chosenP = battle.startingPokemon();
@@ -161,13 +150,8 @@ public class Game {
 		                
 					// User choose to exit the console
 		            case 3:
-		                System.out.println("Exiting...   ____                 _ _                  _ \r\n"
-		                		+ " / ___| ___   ___   __| | |__  _   _  ___  | |\r\n"
-		                		+ "| |  _ / _ \\ / _ \\ / _` | '_ \\| | | |/ _ \\ | |\r\n"
-		                		+ "| |_| | (_) | (_) | (_| | |_) | |_| |  __/ |_|\r\n"
-		                		+ " \\____|\\___/ \\___/ \\__,_|_.__/ \\__, |\\___| (_)\r\n"
-		                		+ "                               |___/          ");
-		                scanner.close();
+		                art.goodBye();
+		            	scanner.close();
 		                return;
 		            default:
 		                System.out.println("Invalid choice. Please try again.");
