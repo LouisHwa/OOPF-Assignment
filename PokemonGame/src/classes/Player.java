@@ -10,11 +10,6 @@ public class Player {
 	private ArrayList<Pokemon> playerPokemons;
 	private int playerMedal;
 	
-	
-	public Player() {
-		
-	}
-	
 	public Player(String playerID, String playerName) {
 		this(playerID, playerName, 0, 0, null, 0);
 	}
@@ -91,7 +86,7 @@ public class Player {
 	@Override
 	public String toString() {
 		return String.format(
-				"Player [playerID=%s, playerName=%s, playerScore=%s, playerBattlePlayed=%s, playerPokemons=%s, playerMedal=%s]",
+				"toString Player [playerID=%s, playerName=%s, playerScore=%s, playerBattlePlayed=%s, playerPokemons=%s, playerMedal=%s]",
 				playerID, playerName, playerScore, playerBattlePlayed, playerPokemons, playerMedal);
 	}
 	
@@ -111,6 +106,38 @@ public class Player {
 
     public void displayBattlePlayed() {
         System.out.println("Battles Played: " + playerBattlePlayed);
+    }
+    
+    public void displayPlayerInformation() {
+        System.out.printf(
+            "=============== Player Information ===============\n" +
+            " Player ID      : %s\n" +
+            " Player Name    : %s\n" +
+            " Player Score   : %d\n" +
+            " Battle Played  : %d\n" +
+            " Player Medal   : %s\n" +
+            " Player Pokemons: ",
+            this.playerID,
+            this.playerName,
+            this.playerScore,
+            this.playerBattlePlayed,
+            this.playerMedal
+        );
+        for (int i = 0; i < this.playerPokemons.size(); i++) {
+            System.out.print(this.playerPokemons.get(i).getPokemonName());
+            
+            // Only add a comma if it's not the last element
+            if (i < this.playerPokemons.size() - 1) {
+                System.out.print(", ");
+            }
+            
+            if ((i + 1) % 3 == 0 && i < this.playerPokemons.size() - 1) {
+                System.out.println();  // Print newline after every 3rd pokemon
+            }
+        
+        }
+        
+        System.out.println("\n==================================================\n");
     }
 
 	

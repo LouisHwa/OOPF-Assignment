@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
@@ -94,7 +95,6 @@ public class Database {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		
 	}
 	
 	// Getting top Five players
@@ -152,20 +152,43 @@ public class Database {
 		return null;
 	}
 	
+	// Update player's Pokemon
+	public void updatePlayerPokemon(Player player, Pokemon pokemon) {
+//		readPokemonFile();
+//		readPlayerFile();
+		for (int i = 0; i < playerList.size(); i++) {
+	        if (playerList.get(i).getPlayerID().equals(player.getPlayerID())) {
+	            // Update the player's Pokémon list
+	            ArrayList<Pokemon> tempList = player.getPlayerPokemons();
+	            if (tempList == null) {
+	                tempList = new ArrayList<>();
+	            }
+	            tempList.add(pokemon);
+	            player.setPlayerPokemons(tempList);
+
+	            // Replace initial player with new player
+	            playerList.set(i, player);
+	            break;
+	        }
+	    }
+		writeToFile();
+	}
+	
+	
 	// Adding new players to the playerList
-	public void addPlayer(String playerName) {
+	public String addPlayer(String playerName) {
 		String newID = generatePlayerID();
-		this.playerList.add(new Player(newID, playerName));
-		System.out.println("Successfully added.");
+		this.playerList.add(new Player(newID, playerName));	
+		return newID;
 	}
 
 	
 	// Writing contents of playerList to the txt file.
 	public void writeToFile() {
 		try {
-			FileWriter writer = new FileWriter(Database.playerFile);
+			new PrintWriter(Database.playerFile).close(); // Clears the file
+			FileWriter writer = new FileWriter(Database.playerFile, false);
 			String playerData = "", tempString = "";
-			
 				for(Player player: getPlayerList()) {
 					
 					//Check if got pokemon
@@ -173,6 +196,7 @@ public class Database {
 						for(Pokemon pokemon : player.getPlayerPokemons()) {
 							tempString = tempString.concat(pokemon.getPokemonName() + "-");
 						}
+				
 						playerData = String.format("%s,%s,%s,%s,%s,%s\n", 
 								player.getPlayerID(), 
 								player.getPlayerName(), 
@@ -198,7 +222,6 @@ public class Database {
 			
 			
 			writer.close();
-			System.out.println("Data written to file successfully.");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -206,9 +229,9 @@ public class Database {
 	}
 	
 	public String generatePlayerID() {
+		readPokemonFile();
+		readPlayerFile();
 		String lastPlayerID = getPlayerList().get(this.playerList.size()-1).getPlayerID();
-		System.out.println(lastPlayerID);
-		
 		
 		int id =  Integer.parseInt(lastPlayerID.substring(1)) + 1;
 		String newPlayerID = String.format("P%03d", id);
