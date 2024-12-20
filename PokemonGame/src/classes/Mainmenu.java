@@ -2,109 +2,153 @@ package classes;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class MainMenu {
+public class Mainmenu {
     // Field: type (used to represent the menu type or category)
-    private String type;
+//    private String type;
 
     // Lists to store player credentials
     private ArrayList<String> usernames = new ArrayList<>();
-    private ArrayList<String> passwords = new ArrayList<>();
-    private String loggedInPlayer = null; // Track the currently logged-in player
-
+    private ArrayList<String> pIDs = new ArrayList<>();
+    private int loggedInPlayerIndex; // Track the currently logged-in player
+    private Player loggedInPlayer;
+    Database db = new Database();
+    Scanner scanner = new Scanner(System.in);
     // Constructor to initialize the Main Menu
-    public MainMenu(String type) {
-        this.type = type;
+    
+
+	public Player getLoggedInPlayer() {
+		return loggedInPlayer;
+	}
+
+
+
+	public void setLoggedInPlayer(Player loggedInPlayer) {
+		this.loggedInPlayer = loggedInPlayer;
+	}
+
+
+
+	public int getLoggedInPlayerIndex() {
+		return loggedInPlayerIndex;
+	}
+
+
+
+	public void setLoggedInPlayerIndex(int loggedInPlayerIndex) {
+		this.loggedInPlayerIndex = loggedInPlayerIndex;
+	}
+
+	public void populateCredentials() {
+    	db.readPlayerFile();
+		db.readPokemonFile();
+    	for(Player player : db.getPlayerList()) {
+    		pIDs.add(player.getPlayerID().toUpperCase());
+    		usernames.add(player.getPlayerName().toLowerCase());
+    	}
     }
 
-    // Method for player sign-up
+	// Method for player sign-up (type in the name will do, then generate ID for them,  no need password
     public void playerSignUp() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("\n--- Player Sign-Up ---");
-
-        System.out.print("Enter a username: ");
-        String username = scanner.nextLine();
-
-        // Check if username already exists
-        if (usernames.contains(username)) {
-            System.out.println("Username already exists! Try a different one.");
-            return;
-        }
-
-        System.out.print("Enter a password: ");
-        String password = scanner.nextLine();
-
-        // Save player credentials
-        usernames.add(username);
-        passwords.add(password);
-        System.out.println("Sign-up successful! You can now log in.");
-    }
-
-    // Method for player login
-    public void playerLogin() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("\n--- Player Login ---");
+        System.out.println("\n======= Player Sign-Up =======");
 
         System.out.print("Enter your username: ");
         String username = scanner.nextLine();
 
-        System.out.print("Enter your password: ");
-        String password = scanner.nextLine();
+    	usernames.add(username);
+    	String newID = db.addPlayer(username);
+    	pIDs.add(newID);
+    	db.writeToFile();
+    	System.out.printf("Sign-up successful! Your player ID: %s... You can now log in.\n\n", newID);
+    
+    }
+
+    // Method for player login
+    public boolean playerLogin() {
+    	populateCredentials();
+    	db.readPokemonFile();
+		db.readPlayerFile();
+		ArrayList<Player> playerList = db.getPlayerList();
+       
+		System.out.println("\n========== Player Login ==========");
+
+        System.out.print("Enter your PlayerID: ");
+        String pID = scanner.nextLine();
+        
+        System.out.print("Enter your username: ");
+        String username = scanner.nextLine();
 
         // Validate credentials
-        int index = usernames.indexOf(username);
-        if (index != -1 && passwords.get(index).equals(password)) {
-            loggedInPlayer = username;
-            System.out.println("Login successful! Welcome, " + username + "!");
-        } else {
-            System.out.println("Invalid username or password. Please try again.");
+        int index = usernames.indexOf(username.toLowerCase());
+        if (index != -1 && pIDs.get(index).equals(pID.toUpperCase())) {
+        	
+        	// Set Logged in player
+        	for (int i = 0; i < playerList.size(); i++) {
+        	    Player player = playerList.get(i); 
+        	    if (player.getPlayerID().equals(pID.toUpperCase())) {
+        	        setLoggedInPlayerIndex(i);
+        	        setLoggedInPlayer(player);
+        	        break; 
+        	    }
+        	}
+            
+            System.out.println("Login successful! Welcome, " + loggedInPlayer.getPlayerName() + "!");
+            System.out.println("==================================\n");
+            return true;
         }
-    }
-
-    // Method to display player information
-    public void displayPlayerInformation() {
-        System.out.println("\n--- Player Information ---");
-
-        if (loggedInPlayer == null) {
-            System.out.println("No player is currently logged in.");
-        } else {
-            System.out.println("Logged-in Player: " + loggedInPlayer);
-            System.out.println("Type: " + type);
+        else {
+        	System.out.println("Invalid username or playerID. Please try again.");
+        	System.out.println("==================================\n");
+    		return false;
         }
-    }
+   }
+        	
+        
+    
+
+    // Method to display player information -- NEED TO CHANGE
+
 
     // Main method to demonstrate the Main Menu
-    public static void main(String[] args) {
-        MainMenu menu = new MainMenu("Pokémon Adventure");
-        Scanner scanner = new Scanner(System.in);
+	public int viewMainMenu(){		
+		while (true) {
+	        System.out.println("=========== Main Menu ==========");
+	        System.out.println("1. Sign Up");
+	        System.out.println("2. Login");
+	        System.out.println("3. Exit");
 
-        while (true) {
-            System.out.println("\n--- Main Menu ---");
-            System.out.println("1. Sign Up");
-            System.out.println("2. Login");
-            System.out.println("3. Display Player Information");
-            System.out.println("4. Exit");
+	        System.out.print("Choose an option: ");
+	      
+	        if (scanner.hasNextInt()) {
+	            int choice = scanner.nextInt();
+	            scanner.nextLine();
+	            return choice;
+	        } else {
+	            System.out.println("Invalid Input! Please enter a number.\n");
+	            scanner.nextLine(); // Clear the invalid input from the buffer
+	        }
+	    }
+	}
+	
+	public int viewLoggedInMenu() {
+		while (true) {
+			System.out.printf("======= Welcome Back, %s! =======\n", loggedInPlayer.getPlayerName());
+	        System.out.println("1. Player's Information");
+	        System.out.println("2. Battle & Catch");
+	        System.out.println("3. Top Players");
+	        System.out.println("4. Log Out");
 
-            System.out.print("Choose an option: ");
-            int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume the newline character
-
-            switch (choice) {
-                case 1:
-                    menu.playerSignUp();
-                    break;
-                case 2:
-                    menu.playerLogin();
-                    break;
-                case 3:
-                    menu.displayPlayerInformation();
-                    break;
-                case 4:
-                    System.out.println("Exiting... Goodbye!");
-                    return;
-                default:
-                    System.out.println("Invalid choice. Please try again.");
-            }
-        }
-    }
+	        System.out.print("Choose an option: ");
+	        if (scanner.hasNextInt()) {
+	            int choice = scanner.nextInt();
+	            scanner.nextLine();
+	            return choice;
+	        } else {
+	            System.out.println("Invalid Input! Please enter a number.\n");
+	            scanner.nextLine(); // Clear the invalid input from the buffer
+	        }
+		}
+	}
+    
+	
 }
 

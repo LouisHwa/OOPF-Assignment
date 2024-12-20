@@ -1,8 +1,9 @@
 package classes;
 
 import java.util.Random;
+import java.util.Scanner;
 
-public abstract class Pokemon {
+public abstract class Pokemon{
 	private String pokemonID;
 	private String pokemonName;
 	private String pokemonType;
@@ -127,8 +128,12 @@ public abstract class Pokemon {
 				"\nPokemon HP: " + getPokemonHP() + 
 				"\nPokemon ATK: " + getPokemonATK() + 
 				"\nPokemon DEF: " + getPokemonDEF() + 
-				"\nPokemon Z-Move: " + getPokemonZMove();
-			
+				"\nPokemon Z-Move: " + getPokemonZMove() + 
+				"\n"; 
+	}
+	
+	public String pokemonStats() {
+		return String.format("%s HP: %s", getPokemonName(), getPokemonHP());
 	}
 	
 	// Get attack name of that pokemon, return the attack damage. 
@@ -138,6 +143,18 @@ public abstract class Pokemon {
 		
 		// Display Attack 
 		int attack = (int)((yourPokemon.checkEffectiveness(yourPokemon, opponentPokemon) * yourPokemon.getPokemonATK()) - opponentPokemon.getPokemonDEF());
+		
+		System.out.printf("Deals %s ATK on %s!\n",attack, opponentPokemon.getPokemonName());
+		opponentPokemon.setPokemonHP(pokemonHP - attack);
+	}
+	
+	public void ult(Pokemon yourPokemon, Pokemon opponentPokemon) {
+		System.out.println("ULTIMATE !!!");
+		System.out.printf("%s uses %s on %s.\n",yourPokemon.getPokemonName(), yourPokemon.getPokemonZMoveName(), opponentPokemon.getPokemonName());
+		
+		// Display Attack 
+		int attack = (int)((yourPokemon.checkEffectiveness(yourPokemon, opponentPokemon) * yourPokemon.getPokemonZMove()) - opponentPokemon.getPokemonDEF());
+
 		System.out.printf("Deals %s ATK on %s!\n",attack, opponentPokemon.getPokemonName());
 		opponentPokemon.setPokemonHP(pokemonHP - attack);
 	}
@@ -145,6 +162,7 @@ public abstract class Pokemon {
 	// Increment the probability after each attack of that pokemon and this is to
 	// randomly check the probability of hitting it. 
 	public boolean checkZmove() {
+		Scanner input = new Scanner(System.in);
 		Random rand = new Random();
 		int randnum = rand.nextInt(100) + 1; // Generates number between 1-100
 		
@@ -155,12 +173,15 @@ public abstract class Pokemon {
 			//Include this message in the battle class, here will be remove
 			System.out.println("Z-Move Available!!");
 			System.out.println("Press ENTER to use it!");
+			input.nextLine();
+			this.zmoveProbability = 0.1;
 			return true;
 		}else {
 			this.zmoveProbability += 0.1;
 			return false;
 		}
 	}
+	
 	
 	// Check whether pokemon is allow to use zmove or not
 	public abstract double checkEffectiveness(Pokemon yourPokemon, Pokemon opponentPokemon);

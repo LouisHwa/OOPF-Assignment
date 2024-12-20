@@ -12,7 +12,7 @@ public class Water extends Pokemon{
 	
 	public double checkEffectiveness(Pokemon yourPokemon, Pokemon opponentPokemon) {
 		if(yourPokemon.getPokemonType().equals("Water") && opponentPokemon.getPokemonType().equals("Fire")) {  // Effective against fire
-			System.out.println("Attack Super Effective!");
+			System.out.println("Attack Super Effective! x1.5 Multiplier");
 			return 1.5;
 		}else {
 			System.out.println("Attack Neutral..");

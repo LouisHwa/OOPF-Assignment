@@ -85,11 +85,19 @@ public class PokemonBall {
 		
 	}
 	
-	
-	public void collect() {
-		
+	public void caught(Pokemon pokemon) {
+		System.out.println("1....");
+		System.out.println("2....");
+		System.out.println("3....");
+		System.out.printf("You have successfully caught %s. \n\n", pokemon.getPokemonName());
 	}
-
+	
+	public void escape(Pokemon pokemon) {
+		System.out.println("1....");
+		System.out.println("2....");
+		System.out.println("3....");
+		System.out.printf("OHH NOO! %s had escape! \n\n", pokemon.getPokemonName());
+	}
 	
 	//toString
 	@Override

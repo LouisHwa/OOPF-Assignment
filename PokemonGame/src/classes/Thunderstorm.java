@@ -2,14 +2,20 @@ package classes;
 
 public class Thunderstorm extends Environment{
 	
+
+
+	public Thunderstorm(String environtmentName, String environementType) {
+		super(environtmentName, environementType);
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public void applyBuff(Pokemon pokemon) {
 		if (pokemon.getPokemonType().equals("Electric")) {
-			pokemon.setPokemonATK(pokemon.getPokemonATK() + 10);
-			System.out.println("Thunderstorm buff applied! ATK increased by 10. New ATK: " + pokemon.getPokemonATK());
-		} 
-		else {
-			System.out.println("No buff applied! Pokemon type does not match Thunderstorm environmet");
+			pokemon.setPokemonATK(pokemon.getPokemonATK() + 20);
+			System.out.printf("Thunderstorm buff applied! ATK increased by 20 on %s!\n", pokemon.getPokemonName());
+		} else {
+			System.out.printf("Environment has no effect on %s!\n", pokemon.getPokemonName());
 		}
 	}
 	
