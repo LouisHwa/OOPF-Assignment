@@ -1,9 +1,9 @@
 P001,Louis,77671,27,Charizard-Articuno-Moltres-Venusaur-Pikachu-Starmie-Bulbasaur-Helioptile-Marowak,3545
-P002,Vincent,23467,6,Rapidash-Jolteon-Marowak-Rapidash-Jolteon-Marowak,34
+P002,Vincent,23467,6,Rapidash-Jolteon-Marowak,34
 P003,Yu Teng,12367,2,Machamp-Pikachu-Machamp-Pikachu,12
-P004,Huai Yin,44789,23,Jolteon-Marowak-Charizard-Starmie-Jolteon-Marowak-Charizard-Starmie,222
-P005,Jacqualeyn,52345,30,Charmender-Pikachu-Charmender-Pikachu,480
-P006,Henry,23440,12,Machamp-Pikachu-Machamp-Pikachu,124
+P004,Huai Yin,44789,23,Jolteon-Marowak,222
+P005,Jacqualeyn,52345,30,Charmender-Pikachu,480
+P006,Henry,23440,12,Machamp-Pikachu,124
 P007,Lucas,3357,1,Charmender-Charmender,14
 P008,Jeremy,0,0,null,0
-P009,Noah,1623,0,Squirtle-Psyduck-Squirtle-Psyduck,113
+P009,Noah,1623,0,Squirtle-Psyduck,113
