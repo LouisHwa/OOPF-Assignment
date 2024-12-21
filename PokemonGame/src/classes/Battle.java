@@ -179,7 +179,7 @@ public class Battle {
     	while(!team1.isEmpty() && !team2.isEmpty()) {
     		Pokemon attacker, defender;
     		
-    		System.out.printf("=========================== Turn %s ===========================\n", counter);
+    		System.out.printf("========================== Turn %s ===========================\n", counter);
         	
         	// if true, team1 against team2, else team2 against team1
     		if(isturn) {

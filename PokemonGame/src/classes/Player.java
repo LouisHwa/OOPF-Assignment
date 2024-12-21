@@ -123,19 +123,24 @@ public class Player {
             this.playerBattlePlayed,
             this.playerMedal
         );
-        for (int i = 0; i < this.playerPokemons.size(); i++) {
-            System.out.print(this.playerPokemons.get(i).getPokemonName());
-            
-            // Only add a comma if it's not the last element
-            if (i < this.playerPokemons.size() - 1) {
-                System.out.print(", ");
-            }
-            
-            if ((i + 1) % 3 == 0 && i < this.playerPokemons.size() - 1) {
-                System.out.println();  // Print newline after every 3rd pokemon
-            }
-        
-        }
+        if(this.playerPokemons != null) {
+        	for (int i = 0; i < this.playerPokemons.size(); i++) {
+	            System.out.print(this.playerPokemons.get(i).getPokemonName());
+	            
+	            // Only add a comma if it's not the last element
+	            if (i < this.playerPokemons.size() - 1) {
+	                System.out.print(", ");
+	            }
+	            
+	            if ((i + 1) % 3 == 0 && i < this.playerPokemons.size() - 1) {
+	                System.out.println();  // Print newline after every 3rd pokemon
+	            }
+	        
+	        }
+        }else{
+        	System.out.println("None");
+        };
+	        
         
         System.out.println("\n==================================================\n");
     }

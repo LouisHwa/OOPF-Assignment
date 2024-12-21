@@ -9,9 +9,9 @@ public class Mainmenu {
     private ArrayList<String> pIDs = new ArrayList<>();
     private int loggedInPlayerIndex; // Track the currently logged-in player
     private Player loggedInPlayer;
-    Database db = new Database();
-    Scanner scanner = new Scanner(System.in);
-    AsciiArt art = new AsciiArt();
+    private Database db = new Database();
+    private Scanner scanner = new Scanner(System.in);
+    private AsciiArt art = new AsciiArt();
    
     // Constructor to initialize the Main Menu
 	public Player getLoggedInPlayer() {

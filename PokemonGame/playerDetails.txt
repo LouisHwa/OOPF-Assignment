@@ -9,3 +9,4 @@ P008,Jeremy,0,0,null,0
 P009,Noah,1623,0,Squirtle-Psyduck,113
 P010,Whay,0,0,Squirtle,0
 P011,g,0,0,null,0
+P012,sss,2361,2,Bulbasaur-Moltres-Voltorb,226
