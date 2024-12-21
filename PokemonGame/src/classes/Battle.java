@@ -25,8 +25,8 @@ public class Battle {
 		Pokemon sp3 = pokelist.get(11); //Squirtle
 		System.out.println("======= Choose your starting pokemon =======");
 		System.out.println("1.\n" + sp1.pokemonInfo());
-		System.out.println("2.\n" + sp1.pokemonInfo());
-		System.out.println("3.\n" + sp1.pokemonInfo());
+		System.out.println("2.\n" + sp2.pokemonInfo());
+		System.out.println("3.\n" + sp3.pokemonInfo());
 		while (true){
 			try {
 				System.out.println("Enter your choice (1, 2, 3):  ");

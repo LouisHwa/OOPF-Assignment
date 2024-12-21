@@ -32,6 +32,14 @@ public abstract class Pokemon{
 		this.pokemonZMoveName = pokemonZMoveName;
 		this.zmoveProbability = zmoveProbability;
 	}
+	
+	public String getPokemonID() {
+		return pokemonID;
+	}
+	
+	public void setPokemonID() {
+		
+	}
 
 	public String getPokemonName() {
 		return pokemonName;
