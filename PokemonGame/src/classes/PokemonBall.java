@@ -1,6 +1,4 @@
 package classes;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 public class PokemonBall {
 	//attributes
@@ -9,10 +7,6 @@ public class PokemonBall {
 	private double ballAppearingProbability;
 
 	//constructor
-	public PokemonBall() {
-		
-	}
-	
 	public PokemonBall(String ballName, double ballSuccessProbability, double ballAppearingProbability) {
 		this.ballName = ballName;
 		this.ballSuccessProbability = ballSuccessProbability;
@@ -64,16 +58,15 @@ public class PokemonBall {
 	}
 	
 	//catch success depending on ball success probability method
-	public boolean checkSuccess(Pokemon pokemon, PokemonBall pokeballs) {
+	public boolean checkSuccess(Pokemon pokemon, PokemonBall pokeball) {
 		int rnd = new Random().nextInt(100) + 1;
 		
 		double successR;
-		if(pokeballs.getBallName().equals("Masterball")) {
+		if(pokeball.getBallName().equals("Masterball")) {
 			successR = 100;
 		}else {
-			successR = (pokeballs.getBallSuccessProbability() - ((pokemon.getPokemonRARITY() - 1) * 0.1)) * 100;
+			successR = (pokeball.getBallSuccessProbability() - ((pokemon.getPokemonRARITY() - 1) * 0.1)) * 100;
 		};
-		
 		if(successR >= rnd) {
 			//if use this need to change from boolean to String
 //			return String.format("Your succesfully captured %s with your %s", pokemon.getPokemonName(), pokeballs.getBallName());

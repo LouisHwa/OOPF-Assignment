@@ -7,12 +7,11 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Battle {
-    Database db = new Database();
-    Scanner scanner = new Scanner(System.in);
-    ArrayList<Pokemon> pokelist = db.getPokemonList();
-    ArrayList<Player> playerlist = db.getPlayerList();
-    AsciiArt art = new AsciiArt();
-    
+    private Database db = new Database();
+    private Scanner scanner = new Scanner(System.in);
+    private AsciiArt art = new AsciiArt();
+    private static PokemonBall[] balls = {new Masterball(), new Ultraball(),new Greatball(), new Pokeball()};
+    private ArrayList<Pokemon> pokelist = db.getPokemonList();
     
     
     // Generates 3 starting pokemon if and only if the player is new.
@@ -243,7 +242,6 @@ public class Battle {
 		// Catch Pokemon If win
 		if (!team1.isEmpty()) {
 			art.catchPokemon();
-			PokemonBall[] balls = {new Masterball(), new Ultraball(),new Greatball(), new Pokeball()};
 			PokemonBall playerball = PokemonBall.ballGenerator(balls);
 			System.out.println("You got a " + playerball.getBallName() + "!");
 			System.out.println("Press [Enter] to catch both of the pokemons!");
