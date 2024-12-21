@@ -11,6 +11,7 @@ public class Battle {
     private Scanner scanner = new Scanner(System.in);
     private AsciiArt art = new AsciiArt();
     private static PokemonBall[] balls = {new Masterball(), new Ultraball(),new Greatball(), new Pokeball()};
+    private String[] Environments = {"Jungle", "Ocean", "Volcano", "Desert", "ThunderStorm"};
     private ArrayList<Pokemon> pokelist = db.getPokemonList();
     
     
@@ -157,17 +158,23 @@ public class Battle {
     	}
     }
     
-    public Player battlingDynamic(Player currentPlayer, ArrayList<Pokemon> userPokemons, ArrayList<Pokemon> wildPokemons, Environment stadium) {
+    public Player battlingDynamic(Player currentPlayer, ArrayList<Pokemon> userPokemons, ArrayList<Pokemon> wildPokemons) {
     	// Initializing all variables
     	int counter = 1; 
     	int score = 0, medal = 0;// Maximum winning of score is 3000 per round
     	Queue<Pokemon> team1 = new LinkedList<>(userPokemons);
     	Queue<Pokemon> team2 = new LinkedList<>(wildPokemons);
     	
+    	
+    	Environment stadium = Environment.environmentGenerator(Environments);
     	if(stadium != null) {
-    		stadium.applyBuff(userPokemons.get(0));
+			System.out.printf("Looks like they flew to %s, a %s!!\n", stadium.getEnvirontmentName(), stadium.getEnvirontmentType());
+			stadium.applyBuff(userPokemons.get(0));
     		stadium.applyBuff(userPokemons.get(1));
-    	}
+    	}else {
+			System.out.println("Looks like they won't be going anywhere.. No Special Environment..\n");
+		}
+
     	
     	System.out.println("");
     	
@@ -339,30 +346,4 @@ public class Battle {
 		};
 	}
     
-    public Environment environmentGenerator() {
-		String[] Environments = {"Jungle", "Ocean", "Volcano", "Desert", "ThunderStorm"};
-		Environment currentEnvironment = null;
-		Random random = new Random();
-		int choice = random.nextInt(Environments.length);
-		String selectedEnvironment = Environments[choice];
-		
-		switch (selectedEnvironment) {
-			case "Jungle":
-				currentEnvironment = new Jungle("Emerald Canopy", "Jungle", "Grass");
-				break;
-			case "Ocean":
-				currentEnvironment = new Ocean("Azure Abyss", "Ocean", "Water");
-				break;
-			case "Volcano":
-				currentEnvironment = new Volcano("Inferno Peak", "Volcano", "Fire");
-				break;
-			case "Desert":
-				currentEnvironment = new Desert("Sunscorch Expanse", "Desert", "Ground");
-				break;
-			case "Thunderstorm":
-				currentEnvironment = new Thunderstorm("Teampest Valley", "Thunderstorm", "Electric");
-				break;				
-		}
-		return currentEnvironment;
-	}
 }

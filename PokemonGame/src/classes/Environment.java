@@ -1,5 +1,7 @@
 package classes;
 
+import java.util.Random;
+
 public abstract class Environment {
 	// attributes
 	private String environtmentName;
@@ -7,10 +9,10 @@ public abstract class Environment {
 	private String environmentElement;
 	
 
-	/**
-	 * @param environtmentName
-	 * @param environementType
-	 */
+	public Environment() {
+		
+	}
+	
 	public Environment(String environtmentName, String environtmentType, String environmentElement) {
 		super();
 		this.environtmentName = environtmentName;
@@ -59,7 +61,31 @@ public abstract class Environment {
 				environtmentType);
 	}
 
-
+	 public static Environment environmentGenerator(String[] environments) {
+			Environment currentEnvironment = null;
+			Random random = new Random();
+			int choice = random.nextInt(environments.length);
+			String selectedEnvironment = environments[choice];
+			
+			switch (selectedEnvironment) {
+				case "Jungle":
+					currentEnvironment = new Jungle("Emerald Canopy", "Jungle", "Grass");
+					break;
+				case "Ocean":
+					currentEnvironment = new Ocean("Azure Abyss", "Ocean", "Water");
+					break;
+				case "Volcano":
+					currentEnvironment = new Volcano("Inferno Peak", "Volcano", "Fire");
+					break;
+				case "Desert":
+					currentEnvironment = new Desert("Sunscorch Expanse", "Desert", "Ground");
+					break;
+				case "Thunderstorm":
+					currentEnvironment = new Thunderstorm("Teampest Valley", "Thunderstorm", "Electric");
+					break;				
+			}
+			return currentEnvironment;
+		}
 
 	//Apply buff
 	public abstract void applyBuff(Pokemon pokemon);

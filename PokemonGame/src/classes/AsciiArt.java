@@ -1,11 +1,6 @@
 package classes;
 
 public class AsciiArt {
-	
-	public AsciiArt() {
-		
-	}
-	
 	// Arts
 	public void playerSignUp() {
 		//Player Sign-Up
@@ -80,23 +75,13 @@ public class AsciiArt {
 				
 	}
 	
-	public void nice() {
-		//Nice!
-				System.out.println(" _   _ _            _ \r\n"
-						+ "| \\ | (_) ___ ___  | |\r\n"
-						+ "|  \\| | |/ __/ _ \\ | |\r\n"
-						+ "| |\\  | | (_|  __/ |_|\r\n"
-						+ "|_| \\_|_|\\___\\___| (_)\n");
-				
-				
-	}
 	
 	public void mainMenuArt() {
 		//Main Menu
 		System.out.println(
-		        "  __      __       .__                                \n" +
-		        " /  \\    /  \\  ____ |  |   ____  ____   _____   ____   \n" +
-		        " \\   \\/\\/   // __  \\|  | _/ ___\\/  _ \\ /     \\_/ __ \\  \n" +
+		        "  __      __        .__                                \n" +
+		        " /  \\    /  \\  ____ |  |  _____  ____   _____   ____   \n" +
+		        " \\   \\/\\/   // __  \\|  | /  ___\\/  _ \\ /     \\_/ __ \\  \n" +
 		        "  \\        / \\  ___/|  |_\\  \\__(  <_> )  Y Y  \\  ___/ \n" +
 		        "   \\__/\\  /   \\___  >____/\\___  >____/|__|_|  /\\___  >\n" +
 		        "        \\/        \\/          \\/            \\/     \\/ \n"+ 
