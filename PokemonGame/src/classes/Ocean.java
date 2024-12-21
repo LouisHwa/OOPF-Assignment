@@ -2,9 +2,8 @@ package classes;
 
 public class Ocean extends Environment{
 	
-	public Ocean(String environtmentName, String environtmentType, String environmentElement) {
-		super(environtmentName, environtmentType, environmentElement);
-		// TODO Auto-generated constructor stub
+	Ocean(){
+		super("Sunscorch Expanse", "Desert", "Ground");
 	}
 
 	@Override

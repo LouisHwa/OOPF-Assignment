@@ -11,7 +11,7 @@ public class Battle {
     private Scanner scanner = new Scanner(System.in);
     private AsciiArt art = new AsciiArt();
     private static PokemonBall[] balls = {new Masterball(), new Ultraball(),new Greatball(), new Pokeball()};
-    private String[] Environments = {"Jungle", "Ocean", "Volcano", "Desert", "ThunderStorm"};
+    private static Environment[] Environments = {new Jungle(), new Ocean(), new Volcano(), new Desert(), new Thunderstorm()};
     private ArrayList<Pokemon> pokelist = db.getPokemonList();
     
     
@@ -344,6 +344,7 @@ public class Battle {
 			System.out.printf("%s. ID: %s, Score: %s, Medal: %s\n", counter,top5score.getPlayerID(),top5score.getPlayerScore(), top5score.getPlayerMedal());
 			counter++;
 		};
+		System.out.println("");
 	}
     
 }

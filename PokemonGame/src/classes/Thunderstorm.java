@@ -2,11 +2,8 @@ package classes;
 
 public class Thunderstorm extends Environment{
 	
-
-
-	public Thunderstorm(String environtmentName, String environtmentType, String environmentElement) {
-		super(environtmentName, environtmentType, environmentElement);
-		// TODO Auto-generated constructor stub
+	Thunderstorm() {
+		super("Teampest Valley", "Thunderstorm", "Electric");
 	}
 
 	@Override

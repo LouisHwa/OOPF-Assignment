@@ -61,31 +61,12 @@ public abstract class Environment {
 				environtmentType);
 	}
 
-	 public static Environment environmentGenerator(String[] environments) {
-			Environment currentEnvironment = null;
+	 public static Environment environmentGenerator(Environment[] environments) {
 			Random random = new Random();
 			int choice = random.nextInt(environments.length);
-			String selectedEnvironment = environments[choice];
-			
-			switch (selectedEnvironment) {
-				case "Jungle":
-					currentEnvironment = new Jungle("Emerald Canopy", "Jungle", "Grass");
-					break;
-				case "Ocean":
-					currentEnvironment = new Ocean("Azure Abyss", "Ocean", "Water");
-					break;
-				case "Volcano":
-					currentEnvironment = new Volcano("Inferno Peak", "Volcano", "Fire");
-					break;
-				case "Desert":
-					currentEnvironment = new Desert("Sunscorch Expanse", "Desert", "Ground");
-					break;
-				case "Thunderstorm":
-					currentEnvironment = new Thunderstorm("Teampest Valley", "Thunderstorm", "Electric");
-					break;				
-			}
-			return currentEnvironment;
-		}
+			Environment selectedEnvironment = environments[choice];
+			return selectedEnvironment;
+	}
 
 	//Apply buff
 	public abstract void applyBuff(Pokemon pokemon);

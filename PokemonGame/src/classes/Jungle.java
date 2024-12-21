@@ -2,8 +2,8 @@ package classes;
 
 public class Jungle extends Environment{
 	
-	public Jungle(String environtmentName, String environtmentType, String environmentElement) {
-		super(environtmentName, environtmentType, environmentElement);
+	public Jungle() {
+		super("Emerald Canopy", "Jungle", "Grass");
 		// TODO Auto-generated constructor stub
 	}
 

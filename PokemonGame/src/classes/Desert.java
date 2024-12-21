@@ -2,8 +2,8 @@ package classes;
 
 public class Desert extends Environment{
 
-	public Desert(String environtmentName, String environtmentType, String environmentElement) {
-		super(environtmentName, environtmentType, environmentElement);
+	public Desert() {
+		super("Sunscorch Expanse", "Desert", "Ground");
 		// TODO Auto-generated constructor stub
 	}
 

@@ -73,7 +73,7 @@ public class Game {
 					                			}
 					                			
 					                			// Pokemon Roaring Message
-					                			System.out.printf("In the wild, they heard you're voice...\n");
+					                			System.out.printf("In the wild, they heard your voice...\n");
 					                			Pokemon[] wildPokemons = battle.wildPokemon();
 					                			battleWildPokemons.add(wildPokemons[0]);
 					                			battleWildPokemons.add(wildPokemons[1]);

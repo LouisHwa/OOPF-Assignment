@@ -2,8 +2,8 @@ package classes;
 
 public class Volcano extends Environment{
 	
-	public Volcano(String environtmentName, String environtmentType, String environmentElement) {
-		super(environtmentName, environtmentType, environmentElement);
+	public Volcano() {
+		super("Inferno Peak", "Volcano", "Fire");
 		// TODO Auto-generated constructor stub
 	}
 
