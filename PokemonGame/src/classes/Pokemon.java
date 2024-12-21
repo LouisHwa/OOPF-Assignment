@@ -33,12 +33,13 @@ public abstract class Pokemon{
 		this.zmoveProbability = zmoveProbability;
 	}
 	
+	
 	public String getPokemonID() {
 		return pokemonID;
 	}
 	
-	public void setPokemonID() {
-		
+	public void setPokemonID(String pokemonID) {
+		this.pokemonID = pokemonID;
 	}
 
 	public String getPokemonName() {

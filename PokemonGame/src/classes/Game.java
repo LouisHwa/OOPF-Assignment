@@ -11,7 +11,6 @@ public class Game {
 		Database db = new Database();
 		Battle battle = new Battle();
 		AsciiArt art = new AsciiArt();
-		ArrayList<Pokemon> pokemonList= db.getPokemonList();
 		ArrayList<Player> playerList = db.getPlayerList();
 		int currentPlayerIndex;
 		Player currentPlayer;
@@ -106,7 +105,7 @@ public class Game {
 			                			
 			                			Environment stadium = battle.environmentGenerator();
 			                			if(stadium != null) {
-			                				System.out.printf("Looks like they flew to %s, a %s!!\n", stadium.getEnvirontmentName(), stadium.getEnvironementType());
+			                				System.out.printf("Looks like they flew to %s, a %s!!\n", stadium.getEnvirontmentName(), stadium.getEnvirontmentType());
 			                			}else {
 			                				System.out.println("Looks like they won't be going anywhere.. No Special Environment..\n");
 			                			}

@@ -3,17 +3,19 @@ package classes;
 public abstract class Environment {
 	// attributes
 	private String environtmentName;
-	private String environementType;
+	private String environtmentType;
+	private String environmentElement;
 	
 
 	/**
 	 * @param environtmentName
 	 * @param environementType
 	 */
-	public Environment(String environtmentName, String environementType) {
+	public Environment(String environtmentName, String environtmentType, String environmentElement) {
 		super();
 		this.environtmentName = environtmentName;
-		this.environementType = environementType;
+		this.environtmentType = environtmentType;
+		this.environmentElement = environmentElement;
 	}
 	
 	
@@ -30,22 +32,31 @@ public abstract class Environment {
 
 
 
-	public String getEnvironementType() {
-		return environementType;
+	public String getEnvirontmentType() {
+		return environtmentType;
 	}
 
 
 
-	public void setEnvironementType(String environementType) {
-		this.environementType = environementType;
+	public void setEnvironementType(String environmentType) {
+		this.environtmentType = environmentType;
 	}
 
+	public String getEnvironmentElement() {
+		return environmentElement;
+	}
+
+
+
+	public void setEnvironmentElement(String environmentElement) {
+		this.environmentElement = environmentElement;
+	}
 
 
 	@Override
 	public String toString() {
-		return String.format("Environment [environtmentName=%s, environementType=%s]", environtmentName,
-				environementType);
+		return String.format("Environment [environtmentName=%s, environtmentType=%s]", environtmentName,
+				environtmentType);
 	}
 
 
@@ -53,7 +64,10 @@ public abstract class Environment {
 	//Apply buff
 	public abstract void applyBuff(Pokemon pokemon);
 	
-	//Get the environment type (match with pokemonType)
-	public abstract String getEnvironmentType();
+
+
+
+
+
 	
 }

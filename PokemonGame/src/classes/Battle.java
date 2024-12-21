@@ -350,19 +350,19 @@ public class Battle {
 		
 		switch (selectedEnvironment) {
 			case "Jungle":
-				currentEnvironment = new Jungle("Emerald Canopy", "Jungle");
+				currentEnvironment = new Jungle("Emerald Canopy", "Jungle", "Grass");
 				break;
 			case "Ocean":
-				currentEnvironment = new Ocean("Azure Abyss", "Ocean");
+				currentEnvironment = new Ocean("Azure Abyss", "Ocean", "Water");
 				break;
 			case "Volcano":
-				currentEnvironment = new Volcano("Inferno Peak", "Volcano");
+				currentEnvironment = new Volcano("Inferno Peak", "Volcano", "Fire");
 				break;
 			case "Desert":
-				currentEnvironment = new Desert("Sunscorch Expanse", "Desert");
+				currentEnvironment = new Desert("Sunscorch Expanse", "Desert", "Ground");
 				break;
 			case "Thunderstorm":
-				currentEnvironment = new Thunderstorm("Teampest Valley", "Thunderstorm");
+				currentEnvironment = new Thunderstorm("Teampest Valley", "Thunderstorm", "Electric");
 				break;				
 		}
 		return currentEnvironment;
